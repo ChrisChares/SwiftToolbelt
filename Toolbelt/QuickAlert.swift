@@ -17,7 +17,6 @@ struct QuickAlert {
     
     init(msg: String, title: String? = nil) {
         alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
-        alert.view.tintColor = Colors.Red
         alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
     }
     /**
