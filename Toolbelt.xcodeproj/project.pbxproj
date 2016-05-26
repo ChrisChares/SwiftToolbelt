@@ -32,6 +32,7 @@
 		832E02781CF763E600FB1A99 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02651CF763E600FB1A99 /* NSURL.swift */; };
 		83FBF14C1CF76675003783AF /* SequenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF14B1CF76675003783AF /* SequenceType.swift */; };
 		83FBF14E1CF766A3003783AF /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF14D1CF766A3003783AF /* CollectionType.swift */; };
+		83FBF1501CF76B40003783AF /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF14F1CF76B40003783AF /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		832E02651CF763E600FB1A99 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		83FBF14B1CF76675003783AF /* SequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceType.swift; sourceTree = "<group>"; };
 		83FBF14D1CF766A3003783AF /* CollectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
+		83FBF14F1CF76B40003783AF /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		F965B770D13B043A68729AA9 /* Pods-Toolbelt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toolbelt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Toolbelt/Pods-Toolbelt.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 		83FBF1461CF765AB003783AF /* Standard Library */ = {
 			isa = PBXGroup;
 			children = (
+				83FBF14F1CF76B40003783AF /* Types.swift */,
 				832E02561CF763E600FB1A99 /* Functions.swift */,
 				832E02581CF763E600FB1A99 /* Array.swift */,
 				832E02571CF763E600FB1A99 /* Dictionary.swift */,
@@ -365,6 +368,7 @@
 				832E02781CF763E600FB1A99 /* NSURL.swift in Sources */,
 				832E02731CF763E600FB1A99 /* PaddedLabel.swift in Sources */,
 				83FBF14E1CF766A3003783AF /* CollectionType.swift in Sources */,
+				83FBF1501CF76B40003783AF /* Types.swift in Sources */,
 				832E026F1CF763E600FB1A99 /* QuickAlert.swift in Sources */,
 				832E02711CF763E600FB1A99 /* Constraints.swift in Sources */,
 				832E026A1CF763E600FB1A99 /* Dictionary.swift in Sources */,

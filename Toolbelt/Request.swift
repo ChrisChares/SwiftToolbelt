@@ -48,7 +48,7 @@ public func Request(req: URLRequestConvertible, fn: (Result<[JSON]>)-> Void) {
                     try validateResponse(response.response!.statusCode, json: result as! JSON)
                 }
                 
-                let json = try toJSONArray(result)
+                let json = try cast(result) as [JSON]
                 
                 fn(Result({json}))
             } catch let error {
@@ -164,36 +164,8 @@ public enum APIError : ErrorType {
 }
 
 public enum ParsingError : ErrorType {
-    case UnableToConvertToJSON
-    case UnableToConvertToJSONArray
     case InvalidJSON
     case NoValidObjects
 }
 
-public enum TypeError : ErrorType {
-    case WrongType
-}
 
-public func cast<T>(value: AnyObject) throws -> T {
-    if let obj = value as? T {
-        return obj
-    } else {
-        throw TypeError.WrongType
-    }
-}
-
-public func toJSON(value: AnyObject) throws -> JSON {
-    if let json = value as? JSON {
-        return json
-    } else {
-        throw ParsingError.UnableToConvertToJSON
-    }
-}
-
-public func toJSONArray(value: AnyObject) throws -> [JSON] {
-    if let json = value as? [JSON] {
-        return json
-    } else {
-        throw ParsingError.UnableToConvertToJSONArray
-    }
-}
