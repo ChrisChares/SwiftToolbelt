@@ -8,16 +8,18 @@
 
 import UIKit
 
+/*:
+ UILabel subclass with optional padding that can be specified in Interface Builder
+*/
 @IBDesignable
-class PaddedLabel : UILabel {
+public class PaddedLabel : UILabel {
     
-    @IBInspectable var leftPadding: CGFloat = 0
-    @IBInspectable var topPadding: CGFloat = 0
-    @IBInspectable var rightPadding: CGFloat = 0
-    @IBInspectable var bottomPadding: CGFloat = 0
+    @IBInspectable public var leftPadding: CGFloat = 0
+    @IBInspectable public var topPadding: CGFloat = 0
+    @IBInspectable public var rightPadding: CGFloat = 0
+    @IBInspectable public var bottomPadding: CGFloat = 0
 
-    
-    override func intrinsicContentSize() -> CGSize {
+    public override func intrinsicContentSize() -> CGSize {
         let size = super.intrinsicContentSize()
         return CGSizeMake(
             size.width + leftPadding + rightPadding,

@@ -11,8 +11,8 @@ import Foundation
 /**
     A wrapper that allows us to utilize native Swift error handling (do - try - catch - defer) with asynchronous operations.  The idea is derived from Benedikt Terhechte's excellent post http://appventure.me/2015/06/19/swift-try-catch-asynchronous-closures/
 */
-struct Result<T> {
-    typealias Eval = () throws -> T
+public struct Result<T> {
+    public typealias Eval = () throws -> T
     private let fn: Eval
     /**
         Create a new Result struct with the function to be evaluated
@@ -20,7 +20,7 @@ struct Result<T> {
         - Parameter fn: The function to evaluate
         - Returns: A new Result struct wrapping the function
     */
-    init(_ fn: Eval) {
+    public init(_ fn: Eval) {
         self.fn = fn
     }
     /**
@@ -29,7 +29,7 @@ struct Result<T> {
         - Throws: Whatever error the original asynchronous action threw
         - Returns: The object associated with a success
     */
-    func eval() throws -> T {
+    public func eval() throws -> T {
         return try fn()
     }
     
@@ -37,14 +37,14 @@ struct Result<T> {
     /**
         Evaluate the wrapped function and return an error optional based on result
     */
-    var error: ErrorType? {
+    public var error: ErrorType? {
         return ErrorOptional(eval)
     }
     
     /**
         For other situations where response doesn't matter, only errors do
     */
-    func rethrow() throws {
+    public func rethrow() throws {
         try fn()
     }
 }
@@ -53,7 +53,7 @@ struct Result<T> {
     Maps any Result<E> to Result<Void>.  Useful for chaining
  
  */
-func AnyResult<E>(fn: (Result<Void>) -> Void) -> (Result<E>) -> Void {
+public func AnyResult<E>(fn: (Result<Void>) -> Void) -> (Result<E>) -> Void {
     
     return { result in
         if let error = result.error {
@@ -67,7 +67,7 @@ func AnyResult<E>(fn: (Result<Void>) -> Void) -> (Result<E>) -> Void {
 /**
     Creates one callback out of multiple of the same type
 */
-func ResultAccumulator<T>(fn: (Result<[T]>) -> Void) -> () -> (Result<T>) -> Void {
+public func ResultAccumulator<T>(fn: (Result<[T]>) -> Void) -> () -> (Result<T>) -> Void {
     
     var results = [T]()
     var requestCount: Int = 0
@@ -96,7 +96,7 @@ func ResultAccumulator<T>(fn: (Result<[T]>) -> Void) -> () -> (Result<T>) -> Voi
     }
 }
 
-func ErrorOptional<T>(fn: () throws -> T) -> ErrorType? {
+public func ErrorOptional<T>(fn: () throws -> T) -> ErrorType? {
     do {
         try fn()
         return nil

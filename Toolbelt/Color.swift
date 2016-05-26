@@ -8,13 +8,13 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     /**
         Create a UIColor from a hex string.  From lucatorella's comment in https://gist.github.com/arshad/de147c42d7b3063ef7bc
         - Parameter hexString: a HexString such as "#FF0000" or "FF0000"
         - Returns: A UIColor representation of the hex string
     */
-    convenience init(hexString: String) {
+    public convenience init(hexString: String) {
         let hex = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
         var int = UInt32()
         NSScanner(string: hex).scanHexInt(&int)
@@ -32,7 +32,7 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
     
-    func asImage() -> UIImage {
+    public func asImage() -> UIImage {
         let rect = CGRectMake(0, 0, 1, 1)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()

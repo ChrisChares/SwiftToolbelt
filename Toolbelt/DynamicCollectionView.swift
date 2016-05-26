@@ -6,14 +6,13 @@
 //  Copyright © 2016 303 Software. All rights reserved.
 //
 
-import Foundation
-
 import UIKit
-
-class DynamicCollectionView : UICollectionView {
+/*:
+ A UICollectionView subclass that resizes to accomodate its contents
+*/
+public class DynamicCollectionView : UICollectionView {
     
-    
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         
         if CGSizeEqualToSize(bounds.size, intrinsicContentSize()) == false {
@@ -21,7 +20,7 @@ class DynamicCollectionView : UICollectionView {
         }
     }
     
-    override func intrinsicContentSize() -> CGSize {
+    public override func intrinsicContentSize() -> CGSize {
         return contentSize
     }
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2016 Chris Chares. All rights reserved.
 //
 
-extension SequenceType {
-    func find(fn: (Generator.Element) -> Bool) -> Generator.Element? {
+public extension SequenceType {
+    public func find(fn: (Generator.Element) -> Bool) -> Generator.Element? {
         for element in self {
             if fn(element) {
                 return element
@@ -16,7 +16,7 @@ extension SequenceType {
         return nil
     }
     
-    func divide(fn: (Generator.Element) -> Bool) -> (slice: [Generator.Element], remainder: [Generator.Element]) {
+    public func divide(fn: (Generator.Element) -> Bool) -> (slice: [Generator.Element], remainder: [Generator.Element]) {
         var slice : [Generator.Element] = []
         var remainder: [Generator.Element] = []
         
@@ -31,7 +31,7 @@ extension SequenceType {
     }
     
     
-    func groupBy<T: Hashable>(fn: (Generator.Element) -> T) -> [T: [Generator.Element]] {
+    public func groupBy<T: Hashable>(fn: (Generator.Element) -> T) -> [T: [Generator.Element]] {
         var dictionary: [T: [Generator.Element]] = [:]
         
         for item in self {
@@ -46,7 +46,7 @@ extension SequenceType {
         return dictionary
     }
     
-    func filterByType<T>() -> [T] {
+    public func filterByType<T>() -> [T] {
         return filter { $0 is T } .map { $0 as! T }
     }
 }

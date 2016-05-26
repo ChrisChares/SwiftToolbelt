@@ -8,16 +8,16 @@
 
 import UIKit
 
-enum BorderSide {
+public enum BorderSide {
     case Left
     case Top
     case Right
     case Bottom
 }
 
-extension UIView {
+public extension UIView {
     
-    func addBorder(side: BorderSide, width: CGFloat, color: UIColor) -> CALayer {
+    public func addBorder(side: BorderSide, width: CGFloat, color: UIColor) -> CALayer {
         let layer = CALayer()
         layer.backgroundColor = color.CGColor
         layer.frame = frameForSide(side, width: width)

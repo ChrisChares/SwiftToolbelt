@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension UIView {
-    func roundCorners(corners: UIRectCorner, radii: CGFloat) {
+public extension UIView {
+    public func roundCorners(corners: UIRectCorner, radii: CGFloat) {
         //UIButton required this
         layer.cornerRadius = 0.0
         

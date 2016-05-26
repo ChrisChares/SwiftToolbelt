@@ -11,12 +11,12 @@ import Foundation
 /*
  Stuff from objc.io
  */
-extension NSURL {
-    static var temporaryURL: NSURL {
+public extension NSURL {
+    public static var temporaryURL: NSURL {
         return try! NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true).URLByAppendingPathComponent(NSUUID().UUIDString)
     }
     
-    static var documentsURL: NSURL {
+    public static var documentsURL: NSURL {
         return try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
     }
 }

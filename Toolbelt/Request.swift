@@ -21,10 +21,10 @@ let manager: Alamofire.Manager = {
     return manager
 }()
 
-typealias JSON = [String: AnyObject]
+public typealias JSON = [String: AnyObject]
 
 // For Responses that expect a JSON object at the top level
-func Request(req: URLRequestConvertible, fn: (Result<JSON>)-> Void) {
+public func Request(req: URLRequestConvertible, fn: (Result<JSON>)-> Void) {
     manager.request(req)
         .responseJSON(completionHandler: { (response) -> Void in
             do {
@@ -39,7 +39,7 @@ func Request(req: URLRequestConvertible, fn: (Result<JSON>)-> Void) {
 }
 //
 //// For responses that expect an array of JSON objects at the top level
-func Request(req: URLRequestConvertible, fn: (Result<[JSON]>)-> Void) {
+public func Request(req: URLRequestConvertible, fn: (Result<[JSON]>)-> Void) {
     manager.request(req)
         .responseJSON(completionHandler: { (response) -> Void in
             do {
@@ -58,18 +58,18 @@ func Request(req: URLRequestConvertible, fn: (Result<[JSON]>)-> Void) {
 }
 
 
-func wrap<T>(cb: (Result<T>) -> Void, fn: () throws -> T) {
+public func wrap<T>(cb: (Result<T>) -> Void, fn: () throws -> T) {
     cb(Result({try fn()}))
 }
 
-protocol ErrorParser {
+public protocol ErrorParser {
     associatedtype T
     func validate(status: Int?, value: T) throws
 }
 
-struct JSONErrorParser : ErrorParser {
-    typealias T = JSON
-    func validate(status: Int?, value: JSON) throws {
+public struct JSONErrorParser : ErrorParser {
+    public typealias T = JSON
+    public func validate(status: Int?, value: JSON) throws {
         guard let s = status where s > 199 && s < 300 else {
             let message = value["message"] as? String ?? "Error: \(status!)"
             throw APIError.ServerError(code: status!, message: message)
@@ -77,9 +77,9 @@ struct JSONErrorParser : ErrorParser {
     }
 }
 
-struct JSONArrayErrorParser : ErrorParser {
-    typealias T = [JSON]
-    func validate(status: Int?, value: [JSON]) throws {
+public struct JSONArrayErrorParser : ErrorParser {
+    public typealias T = [JSON]
+    public func validate(status: Int?, value: [JSON]) throws {
         guard let s = status where s > 199 && s < 300 else {
             let message = "Error: \(status!)"
             throw APIError.ServerError(code: status!, message: message)
@@ -87,7 +87,7 @@ struct JSONArrayErrorParser : ErrorParser {
     }
 }
 
-func Request<T, E: ErrorParser where E.T == T>(req: URLRequestConvertible, errorParser: E? = nil,fn: (Result<T>) -> Void) {
+public func Request<T, E: ErrorParser where E.T == T>(req: URLRequestConvertible, errorParser: E? = nil,fn: (Result<T>) -> Void) {
     manager.request(req)
         .responseJSON(completionHandler: { (response) -> Void in
             wrap(fn) {
@@ -101,7 +101,7 @@ func Request<T, E: ErrorParser where E.T == T>(req: URLRequestConvertible, error
         })
 }
 
-protocol Parser {
+public protocol Parser {
     associatedtype Type
 }
 
@@ -114,16 +114,16 @@ protocol Parser {
 //    
 //}
 
-func RequestJSON(req: URLRequestConvertible, fn: (Result<JSON>) -> Void) {
+public func RequestJSON(req: URLRequestConvertible, fn: (Result<JSON>) -> Void) {
     Request(req, errorParser: JSONErrorParser(), fn: fn)
 }
-func RequestJSONArray(req: URLRequestConvertible, fn: (Result<[JSON]>) -> Void) {
+public func RequestJSONArray(req: URLRequestConvertible, fn: (Result<[JSON]>) -> Void) {
     Request(req, errorParser: JSONArrayErrorParser(), fn: fn)
 }
 
 
 
-extension Result {
+public extension Result {
     /**
      Wrap a Alamofire result enum in a Result struct
      
@@ -141,7 +141,7 @@ extension Result {
 }
 
 
-extension Alamofire.Result {
+public extension Alamofire.Result {
     func unwrap() throws -> Value {
         switch self {
         case .Success(let value):
@@ -159,22 +159,22 @@ private func validateResponse(statusCode: Int, json: JSON) throws {
     }
 }
 
-enum APIError : ErrorType {
+public enum APIError : ErrorType {
     case ServerError(code: Int, message: String)
 }
 
-enum ParsingError : ErrorType {
+public enum ParsingError : ErrorType {
     case UnableToConvertToJSON
     case UnableToConvertToJSONArray
     case InvalidJSON
     case NoValidObjects
 }
 
-enum TypeError : ErrorType {
+public enum TypeError : ErrorType {
     case WrongType
 }
 
-func cast<T>(value: AnyObject) throws -> T {
+public func cast<T>(value: AnyObject) throws -> T {
     if let obj = value as? T {
         return obj
     } else {
@@ -182,7 +182,7 @@ func cast<T>(value: AnyObject) throws -> T {
     }
 }
 
-func toJSON(value: AnyObject) throws -> JSON {
+public func toJSON(value: AnyObject) throws -> JSON {
     if let json = value as? JSON {
         return json
     } else {
@@ -190,7 +190,7 @@ func toJSON(value: AnyObject) throws -> JSON {
     }
 }
 
-func toJSONArray(value: AnyObject) throws -> [JSON] {
+public func toJSONArray(value: AnyObject) throws -> [JSON] {
     if let json = value as? [JSON] {
         return json
     } else {

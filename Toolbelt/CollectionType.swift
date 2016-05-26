@@ -6,8 +6,8 @@
 //  Copyright © 2016 Chris Chares. All rights reserved.
 //
 
-extension CollectionType {
-    func chunk(size: Int) -> [[Generator.Element]] {
+public extension CollectionType {
+    public func chunk(size: Int) -> [[Generator.Element]] {
         var i = 0
         var result :[[Generator.Element]] = []
         

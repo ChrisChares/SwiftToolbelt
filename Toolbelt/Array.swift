@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Array {
-    func sortByProperty<T: Comparable>(ascending: Bool = true, fn: (Generator.Element) -> T) -> [Generator.Element] {
+public extension Array {
+    public func sortByProperty<T: Comparable>(ascending: Bool = true, fn: (Generator.Element) -> T) -> [Generator.Element] {
         
         return sort {
             let a = fn($0)
@@ -23,7 +23,7 @@ extension Array {
         }
     }
     
-    func pluck<T>(fn: (Generator.Element) -> T) -> [T] {
+    public func pluck<T>(fn: (Generator.Element) -> T) -> [T] {
         return map { fn($0) }
     }
 }

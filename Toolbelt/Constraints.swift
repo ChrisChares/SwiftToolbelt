@@ -9,8 +9,8 @@
 import UIKit
 
 
-extension UIView {
-    func deactivateAllConstraints() {
+public extension UIView {
+    public func deactivateAllConstraints() {
         
         // depth first
         for view in subviews {
@@ -19,7 +19,7 @@ extension UIView {
         NSLayoutConstraint.deactivateConstraints(constraints)
     }
     
-    func activateAllConstraints() {
+    public func activateAllConstraints() {
         
         // depth first
         for view in subviews {

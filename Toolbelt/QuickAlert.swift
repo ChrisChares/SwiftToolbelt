@@ -11,11 +11,11 @@ import UIKit
 /**
     A simple wrapper to quickly present messages to the user with one line of code
 */
-struct QuickAlert {
+public struct QuickAlert {
     
-    let alert : UIAlertController
+    public let alert : UIAlertController
     
-    init(msg: String, title: String? = nil) {
+    public init(msg: String, title: String? = nil) {
         alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
     }
@@ -24,43 +24,42 @@ struct QuickAlert {
      
         - Parameter vc: The UIViewController to present the UIAlertController from.  It is optional so you can use this from within closures with a weak self seamlessly
     */
-    func show(vc: UIViewController?) -> Void {
+    public func show(vc: UIViewController?) -> Void {
         vc?.presentViewController(alert, animated: true, completion: nil)
     }
 }
-//
-//import JGProgressHUD
-//
-//extension UIView {
-//    func showSuccess(delay: Float = 1.5) {
-//        let hud = JGProgressHUD(style: .Dark)
-//        hud.textLabel.text = "Success!"
-//        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-//        hud.square = true
-//        
-//        hud.showInView(self, animated: true)
-//        hud.dismissAfterDelay(1.5)
-//    }
-//    
-//    func showError(text: String = "", delay: Float = 3.0) {
-//        let hud = JGProgressHUD(style: .Dark)
-//        hud.textLabel.text = text
-//        hud.indicatorView = JGProgressHUDErrorIndicatorView()
-////        hud.square = true
-//        
-//        hud.showInView(self, animated: true)
-//        hud.dismissAfterDelay(3.0, animated: true)
-//    }
-//    
-//    func showProgress(text: String = "Loading") {
-//        let hud = JGProgressHUD(style: .Dark)
-//        hud.textLabel.text = text
-//        hud.showInView(self, animated: true)
-//    }
-//    
-//    func hideProgress() {
-//        if let hud = subviews.find({ $0 is JGProgressHUD }) as? JGProgressHUD {
-//            hud.dismiss()
-//        }
-//    }
-//}
+
+import JGProgressHUD
+
+public extension UIView {
+    public func showSuccess(delay: Float = 1.5) {
+        let hud = JGProgressHUD(style: .Dark)
+        hud.textLabel.text = "Success!"
+        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        hud.square = true
+        
+        hud.showInView(self, animated: true)
+        hud.dismissAfterDelay(1.5)
+    }
+    
+    public func showError(text: String = "", delay: Float = 3.0) {
+        let hud = JGProgressHUD(style: .Dark)
+        hud.textLabel.text = text
+        hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        
+        hud.showInView(self, animated: true)
+        hud.dismissAfterDelay(3.0, animated: true)
+    }
+    
+    public func showProgress(text: String = "Loading") {
+        let hud = JGProgressHUD(style: .Dark)
+        hud.textLabel.text = text
+        hud.showInView(self, animated: true)
+    }
+    
+    public func hideProgress() {
+        if let hud = subviews.find({ $0 is JGProgressHUD }) as? JGProgressHUD {
+            hud.dismiss()
+        }
+    }
+}

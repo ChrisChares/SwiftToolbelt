@@ -7,14 +7,19 @@
 //
 
 import UIKit
+/*:
+    NSObject subclass that auto forwards focus amongst a group of UITextField's when next/done is selected.  You can create this in IB and then connect the delegates
+*/
+public class FormKeyboardHandler : NSObject {
+    @IBInspectable public var textFieldTopPadding: CGFloat = 14
+    @IBOutlet weak public var scrollView : UIScrollView?
+}
 
-class FormKeyboardHandler : NSObject, UITextFieldDelegate {
-    
-    @IBInspectable var textFieldTopPadding: CGFloat = 14
-    
-    @IBOutlet weak var scrollView : UIScrollView?
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+/*
+    UITextFieldDelegate
+*/
+extension FormKeyboardHandler : UITextFieldDelegate {
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
         let currentTag = textField.tag
         let view = textField.superview!
         
@@ -33,7 +38,7 @@ class FormKeyboardHandler : NSObject, UITextFieldDelegate {
         }
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    public func textFieldDidBeginEditing(textField: UITextField) {
         // make sure any UITextField that's being edited is up top
         if let scrollView = scrollView {
             scrollView.setContentOffset(CGPointMake(0, textField.frame.origin.y - textFieldTopPadding), animated: true)

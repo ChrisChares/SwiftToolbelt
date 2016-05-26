@@ -6,25 +6,24 @@
 //  Copyright © 2016 303 Software. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
-struct CoreData {
+public struct CoreData {
     // MARK: - Core Data stack
     
-    static var applicationDocumentsDirectory: NSURL = {
+    public static var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "uk.co.plymouthsoftware.core_data" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
     }()
     
-    static var managedObjectModel: NSManagedObjectModel = {
+    public static var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("Model", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
-    static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+    public static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
@@ -50,7 +49,7 @@ struct CoreData {
         return coordinator
     }()
     
-    static var managedObjectContext: NSManagedObjectContext = {
+    public static var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = persistentStoreCoordinator
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
@@ -60,7 +59,7 @@ struct CoreData {
     
     // MARK: - Core Data Saving support
     
-    static func saveContext () throws {
+    public static func saveContext () throws {
         if managedObjectContext.hasChanges {
             do {
                 try managedObjectContext.save()
@@ -72,7 +71,7 @@ struct CoreData {
         }
     }
     
-    static func quickSave() -> ErrorType? {
+    public static func quickSave() -> ErrorType? {
         do {
             try saveContext()
             return nil
@@ -83,10 +82,9 @@ struct CoreData {
     }
 }
 
-extension CoreData {
+public extension CoreData {
     
-    
-    static func purge(entityName: String) throws {
+    public static func purge(entityName: String) throws {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         
         let items = try managedObjectContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
@@ -98,9 +96,9 @@ extension CoreData {
 }
 
 
-extension NSManagedObjectContext {
+public extension NSManagedObjectContext {
     
-    func countForFetchRequest(request: NSFetchRequest) throws -> Int {
+    public func countForFetchRequest(request: NSFetchRequest) throws -> Int {
         var error: NSError?
         let result = countForFetchRequest(request, error: &error)
         
@@ -122,25 +120,25 @@ extension NSManagedObjectContext {
 /*
     A wrapper to allow proper generic usage
 */
-class ManagedObject : NSManagedObject {}
+public class ManagedObject : NSManagedObject {}
 
-protocol ManagedObjectType {
+public protocol ManagedObjectType {
     static var entityName: String { get }
     static var defaultSortDescriptors: [NSSortDescriptor]? { get }
     
     static func findOrCreate<E>(predicate: NSPredicate) throws -> E
 }
 
-extension ManagedObjectType {
-    static var defaultSortDescriptors: [NSSortDescriptor]? { return nil }
+public extension ManagedObjectType {
+    public static var defaultSortDescriptors: [NSSortDescriptor]? { return nil }
     
-    static var sortedFetchRequest: NSFetchRequest {
+    public static var sortedFetchRequest: NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.sortDescriptors = defaultSortDescriptors
         return fetchRequest
     }
     
-    static func findOrCreate<E>(predicate: NSPredicate) throws -> E {
+    public static func findOrCreate<E>(predicate: NSPredicate) throws -> E {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = predicate

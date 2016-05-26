@@ -7,7 +7,7 @@
 //
 
 //: Creates a function that invokes func, while it’s called less than n times. Subsequent calls to the created function return the result of the last func invocation.
-func before<T>(n: Int, fn: () -> T) -> () -> T {
+public func before<T>(n: Int, fn: () -> T) -> () -> T {
     guard n > 0 else {
         fatalError("Can't call with n < 1")
     }
@@ -27,7 +27,7 @@ func before<T>(n: Int, fn: () -> T) -> () -> T {
 }
 
 //: Creates a function that is restricted to invoking func once. Repeat calls to the function return the value of the first invocation. The func is invoked with the this binding and arguments of the created function.
-func once(fn: ()-> Void) -> () -> Void {
+public func once(fn: ()-> Void) -> () -> Void {
     var run = false
     return {
         if run == false {
@@ -37,7 +37,7 @@ func once(fn: ()-> Void) -> () -> Void {
     }
 }
 //: Seconds
-func throttle(wait: Double, fn: ()->Void) -> () -> Void {
+public func throttle(wait: Double, fn: ()->Void) -> () -> Void {
     var lastInvoked = NSDate.distantPast()
     return {
         if NSDate().timeIntervalSinceDate(lastInvoked) > wait {
@@ -48,7 +48,7 @@ func throttle(wait: Double, fn: ()->Void) -> () -> Void {
 }
 
 //: Creates a function that invokes func with arguments reversed.
-func flip<E, T, Z>(fn: (E, T) -> Z) -> (T, E) -> Z {
+public func flip<E, T, Z>(fn: (E, T) -> Z) -> (T, E) -> Z {
     return { (t: T, e:E) in
         return fn(e, t)
     }
@@ -56,7 +56,7 @@ func flip<E, T, Z>(fn: (E, T) -> Z) -> (T, E) -> Z {
 
 //: Creates a function that negates the result of the predicate func. The func predicate is invoked with the this binding and arguments of the created function.
 //Seems to be of little use in Swift, unless I'm missing something
-func negate(@autoclosure fn: () -> Bool) -> () -> Bool {
+public func negate(@autoclosure fn: () -> Bool) -> () -> Bool {
     let bool = fn()
     return {
         return (bool == false) ? true : false
