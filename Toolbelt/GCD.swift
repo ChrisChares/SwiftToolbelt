@@ -22,4 +22,9 @@ public struct GCD {
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         dispatch_async(queue, fn)
     }
+    
+    public static func dispatchMain(fn: () -> Void) {
+        let queue = dispatch_get_main_queue()
+        dispatch_async(queue, fn)
+    }
 }

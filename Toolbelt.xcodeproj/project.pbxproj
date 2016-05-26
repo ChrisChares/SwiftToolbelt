@@ -136,8 +136,7 @@
 				83FBF1471CF765B1003783AF /* UIKit */,
 				83FBF1461CF765AB003783AF /* Standard Library */,
 				83FBF1451CF765A4003783AF /* CoreData */,
-				832E02541CF763E600FB1A99 /* Result.swift */,
-				832E02551CF763E600FB1A99 /* Request.swift */,
+				83FBF1511CF76C6B003783AF /* Request / Result */,
 				832E023C1CF75A3800FB1A99 /* Toolbelt.h */,
 				832E023E1CF75A3800FB1A99 /* Info.plist */,
 			);
@@ -206,6 +205,15 @@
 				832E02651CF763E600FB1A99 /* NSURL.swift */,
 			);
 			name = Foundation;
+			sourceTree = "<group>";
+		};
+		83FBF1511CF76C6B003783AF /* Request / Result */ = {
+			isa = PBXGroup;
+			children = (
+				832E02541CF763E600FB1A99 /* Result.swift */,
+				832E02551CF763E600FB1A99 /* Request.swift */,
+			);
+			name = "Request / Result";
 			sourceTree = "<group>";
 		};
 		BC88161AC2FFB5DF74BC61B0 /* Frameworks */ = {

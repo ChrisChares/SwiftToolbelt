@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias JSON = [String: AnyObject]
+
 public enum TypeError : ErrorType {
     case WrongType
 }

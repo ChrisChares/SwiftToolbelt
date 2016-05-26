@@ -13,15 +13,12 @@ import Alamofire
     Wrappers, typealias and assorted functions to make dealing with JSON and networking requests less ugly
 
 */
-
 let manager: Alamofire.Manager = {
     let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
     configuration.HTTPMaximumConnectionsPerHost = 1
     let manager = Alamofire.Manager(configuration: configuration)
     return manager
 }()
-
-public typealias JSON = [String: AnyObject]
 
 // For Responses that expect a JSON object at the top level
 public func Request(req: URLRequestConvertible, fn: (Result<JSON>)-> Void) {
@@ -123,25 +120,10 @@ public func RequestJSONArray(req: URLRequestConvertible, fn: (Result<[JSON]>) ->
 
 
 
-public extension Result {
-    /**
-     Wrap a Alamofire result enum in a Result struct
-     
-     - Parameter res: an Alamofire Result object
-     - Returns: A Result struct wrapping the Alamofire response
-     */
-    static func af(res: Alamofire.Result<AnyObject, NSError>) -> Result<AnyObject> {
-        switch res {
-        case .Success(let value):
-            return Result<AnyObject>({value})
-        case .Failure(let error):
-            return Result<AnyObject>({throw error})
-        }
-    }
-}
-
-
 public extension Alamofire.Result {
+    /**
+     Unwrap an Alamofire result enum into a value or throw an error
+     */
     func unwrap() throws -> Value {
         switch self {
         case .Success(let value):
