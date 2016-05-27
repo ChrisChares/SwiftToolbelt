@@ -15,7 +15,7 @@ public extension String {
         return numberFormatter.numberFromString(self)?.integerValue
     }
     
-    public func contains(text: String, ignoreCase: Bool = true) -> Bool {
+    public func contains(text: String, ignoreCase: Bool = false) -> Bool {
         guard text != "" else {
             return true
         }

@@ -1,5 +1,5 @@
 //
-//  StandardLibraryTests.swift
+//  SequenceTypeTests.swift
 //  Toolbelt
 //
 //  Created by Chris Chares on 5/27/16.
@@ -10,17 +10,8 @@ import XCTest
 import Nimble
 @testable import Toolbelt
 
-class StandardLibraryTests: XCTestCase {
-    /*
-        Types.swift
-    */
-    func testCast() {
-        let int = 42
-        expect { try cast(int) as String }.to(throwError(TypeError.WrongType))
-    }
-    /*
-        Array.swift
-    */
+class SequenceTypeTests: XCTestCase {
+    
     func testPluck() {
         
         struct Sample {
