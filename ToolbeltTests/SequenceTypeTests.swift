@@ -12,27 +12,36 @@ import Nimble
 
 class SequenceTypeTests: XCTestCase {
     
-    func testPluck() {
-        
-        struct Sample {
-            let value: Int
+    class Sample {
+        let value: Int
+        init(value: Int) {
+            self.value = value
         }
-        
+    }
+    
+    func testPluck() {
         let array = [Sample(value:1), Sample(value:2)]
         let plucked = array.pluck { $0.value }
+        
         expect(plucked).to(contain(1,2))
     }
     
     func testSortByProperty() {
-        
-        struct Sample {
-            let value: Int
-        }
-        
         let array = [Sample(value:2), Sample(value:1)]
         let sorted = array.sortByProperty{ $0.value }
         
-        expect(sorted[0].value).to(equal(array[1].value))
-        expect(sorted[1].value).to(equal(array[0].value))
+        expect(sorted[0]).to(beIdenticalTo(array[1]))
+        expect(sorted[1]).to(beIdenticalTo(array[0]))
+    }
+    
+    func testFind() {
+        let array = [Sample(value:1), Sample(value:2), Sample(value:3)]
+        let found = array.find { $0.value == 2 }
+        
+        expect(found).toNot(beNil())
+        expect(found).to(beIdenticalTo(array[1]))
+        
+        let notFound = array.find { $0.value == 1337 }
+        expect(notFound).to(beNil())
     }
 }

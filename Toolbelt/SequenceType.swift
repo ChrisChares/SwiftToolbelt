@@ -7,6 +7,9 @@
 //
 
 public extension SequenceType {
+    /*:
+        Returns the first object the passed function returns true for
+    */
     public func find(fn: (Generator.Element) -> Bool) -> Generator.Element? {
         for element in self {
             if fn(element) {
