@@ -31,4 +31,20 @@ class StringTests: XCTestCase {
         expect(string[6]).to(equal("g"))
         expect(string[0..<5]).to(equal("We're"))
     }
+    
+    func testLength() {
+        expect("12345".length).to(equal(5))
+    }
+    
+    func testLastCharacter() {
+        expect("".lastCharacter).to(beNil())
+        expect("12345".lastCharacter).to(equal("5"))
+    }
+    
+    func testInsert() {
+        var string = "abc"
+        string.insert("5", index: 3)
+        string.insert("0", index: 0)
+        expect(string).to(equal("0abc5"))
+    }
 }

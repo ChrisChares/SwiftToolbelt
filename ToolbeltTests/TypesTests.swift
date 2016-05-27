@@ -14,6 +14,7 @@ class TypesTests: XCTestCase {
     
     func testCast() {
         let int = 42
+        expect { try cast(int) as Double }.toNot(throwError())
         expect { try cast(int) as String }.to(throwError(TypeError.WrongType))
     }
 }
