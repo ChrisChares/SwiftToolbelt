@@ -11,5 +11,7 @@ end
 
 target 'ToolbeltTests' do
 
+pod 'Nimble'
+
 end
 
