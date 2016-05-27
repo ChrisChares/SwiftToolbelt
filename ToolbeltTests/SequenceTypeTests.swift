@@ -44,4 +44,15 @@ class SequenceTypeTests: XCTestCase {
         let notFound = array.find { $0.value == 1337 }
         expect(notFound).to(beNil())
     }
+    
+    func testFilterByType() {
+        let array = [1,2,"Rick","Morty"]
+        let integers = array.filterByType() as [Int]
+        let strings = array.filterByType() as [String]
+        
+        expect(integers.count).to(equal(2))
+        expect(strings.count).to(equal(2))
+        expect(integers).to(contain(1,2))
+        expect(strings).to(contain("Rick","Morty"))
+    }
 }

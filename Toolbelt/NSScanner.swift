@@ -1,0 +1,66 @@
+//
+//  NSScanner.swift
+//  Advent
+//
+//  Created by Chris Chares on 3/20/16.
+//  Copyright © 2016 303Software. All rights reserved.
+//
+
+import Foundation
+
+public extension NSScanner {
+    public func scanInt() -> Int? {
+        var int : CInt = 0
+        let didScan = scanInt(&int)
+        return didScan ? Int(int) : nil
+    }
+    
+    public func scanDouble() -> Double? {
+        var double : CDouble = 0.0
+        let didScan = scanDouble(&double)
+        return didScan ? Double(double) : nil
+    }
+    
+    public func scanRawRepresentableUpToCharacters<T: RawRepresentable where T.RawValue == String>(toCharacters: NSCharacterSet) -> T? {
+        if let raw = scanUpToCharacters(toCharacters) {
+            return T(rawValue: raw)
+        } else {
+            return nil
+        }
+    }
+    
+    public func scan(token : String) -> Bool {
+        return scanString(token, intoString: nil)
+    }
+    
+    public func scanUpToString(toString: String) -> String? {
+        var string : NSString?
+        scanUpToString(toString, intoString: &string)
+        return string as? String
+    }
+    
+    public func scanUpToCharacters(toCharacters: NSCharacterSet) -> String? {
+        var string : NSString?
+        scanUpToCharactersFromSet(toCharacters, intoString: &string)
+        return string as? String
+    }
+}
+
+public extension _ArrayType where Generator.Element == String {
+    public func scanMap<E>(config: ((String) -> NSScanner)?, fn: (NSScanner) -> E) -> [E] {
+        
+        var configFunction: ((String) -> NSScanner)! = config
+        if configFunction == nil {
+            configFunction = { string in
+                return NSScanner(string: string)
+            }
+        }
+        
+        var xs = [E]()
+        for string in self {
+            xs.append(fn(configFunction(string)))
+        }
+        
+        return xs
+    }
+}

@@ -49,6 +49,22 @@ public extension SequenceType {
         return dictionary
     }
     
+    public func chunk(size: Int) -> [[Generator.Element]] {
+        var i = 0
+        var result :[[Generator.Element]] = []
+        
+        var xs : [Generator.Element] = []
+        for item in self {
+            xs.append(item)
+            if i % size == 0 && i != 0 {
+                result.append(xs)
+                xs = []
+            }
+            i += 1
+        }
+        return result
+    }
+    
     public func filterByType<T>() -> [T] {
         return filter { $0 is T } .map { $0 as! T }
     }
@@ -73,5 +89,34 @@ public extension SequenceType {
      */
     public func pluck<T>(fn: (Generator.Element) -> T) -> [T] {
         return map { fn($0) }
+    }
+    
+    public func filterMax<E: protocol<Comparable, Hashable>>(fn:(Generator.Element) -> E?) -> [Generator.Element] {
+        
+        var maximums: [Generator.Element] = []
+        var max: E? = nil
+        
+        for obj in self {
+            guard let value = fn(obj) else  {
+                continue
+            }
+            
+            guard let previousMax = max else {
+                max = value
+                if max != nil {
+                    maximums.append(obj)
+                }
+                continue
+            }
+            
+            if value > previousMax {
+                maximums.removeAll()
+                maximums.append(obj)
+                max = value
+            } else if value == previousMax {
+                maximums.append(obj)
+            }
+        }
+        return maximums
     }
 }

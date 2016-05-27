@@ -29,11 +29,11 @@
 		832E02771CF763E600FB1A99 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02641CF763E600FB1A99 /* DataSource.swift */; };
 		832E02781CF763E600FB1A99 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02651CF763E600FB1A99 /* NSURL.swift */; };
 		83FBF14C1CF76675003783AF /* SequenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF14B1CF76675003783AF /* SequenceType.swift */; };
-		83FBF14E1CF766A3003783AF /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF14D1CF766A3003783AF /* CollectionType.swift */; };
 		83FBF1501CF76B40003783AF /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF14F1CF76B40003783AF /* Types.swift */; };
 		83FBF1561CF8AFB6003783AF /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF1551CF8AFB6003783AF /* SequenceTypeTests.swift */; };
 		83FBF1581CF8AFF7003783AF /* TypesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF1571CF8AFF7003783AF /* TypesTests.swift */; };
 		83FBF15A1CF8B033003783AF /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF1591CF8B033003783AF /* StringTests.swift */; };
+		83FBF15C1CF8BC5A003783AF /* NSScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF15B1CF8BC5A003783AF /* NSScanner.swift */; };
 		8425E77A280F64A79056E427 /* Pods_ToolbeltTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4639D91A0A7A51D58A5BD852 /* Pods_ToolbeltTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,11 +77,11 @@
 		832E02641CF763E600FB1A99 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		832E02651CF763E600FB1A99 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		83FBF14B1CF76675003783AF /* SequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceType.swift; sourceTree = "<group>"; };
-		83FBF14D1CF766A3003783AF /* CollectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionType.swift; sourceTree = "<group>"; };
 		83FBF14F1CF76B40003783AF /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		83FBF1551CF8AFB6003783AF /* SequenceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTypeTests.swift; sourceTree = "<group>"; };
 		83FBF1571CF8AFF7003783AF /* TypesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTests.swift; sourceTree = "<group>"; };
 		83FBF1591CF8B033003783AF /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
+		83FBF15B1CF8BC5A003783AF /* NSScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSScanner.swift; sourceTree = "<group>"; };
 		F965B770D13B043A68729AA9 /* Pods-Toolbelt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toolbelt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Toolbelt/Pods-Toolbelt.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,7 +176,6 @@
 				832E02571CF763E600FB1A99 /* Dictionary.swift */,
 				832E025F1CF763E600FB1A99 /* String.swift */,
 				83FBF14B1CF76675003783AF /* SequenceType.swift */,
-				83FBF14D1CF766A3003783AF /* CollectionType.swift */,
 				832E02561CF763E600FB1A99 /* Functions.swift */,
 			);
 			name = "Standard Library";
@@ -211,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				832E02651CF763E600FB1A99 /* NSURL.swift */,
+				83FBF15B1CF8BC5A003783AF /* NSScanner.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -440,9 +440,9 @@
 				832E02751CF763E600FB1A99 /* DynamicCollectionView.swift in Sources */,
 				832E026D1CF763E600FB1A99 /* Borders.swift in Sources */,
 				832E02701CF763E600FB1A99 /* Corners.swift in Sources */,
+				83FBF15C1CF8BC5A003783AF /* NSScanner.swift in Sources */,
 				832E02781CF763E600FB1A99 /* NSURL.swift in Sources */,
 				832E02731CF763E600FB1A99 /* PaddedLabel.swift in Sources */,
-				83FBF14E1CF766A3003783AF /* CollectionType.swift in Sources */,
 				83FBF1501CF76B40003783AF /* Types.swift in Sources */,
 				832E026F1CF763E600FB1A99 /* QuickAlert.swift in Sources */,
 				832E02711CF763E600FB1A99 /* Constraints.swift in Sources */,
