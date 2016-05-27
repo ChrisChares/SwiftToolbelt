@@ -9,6 +9,9 @@
 import Foundation
 
 public extension Array {
+    /*
+        Sort by a chosen property
+    */
     public func sortByProperty<T: Comparable>(ascending: Bool = true, fn: (Generator.Element) -> T) -> [Generator.Element] {
         
         return sort {
@@ -22,7 +25,9 @@ public extension Array {
             }
         }
     }
-    
+    /*:
+        Create a new array by plucking a value from each object in the existing array
+    */
     public func pluck<T>(fn: (Generator.Element) -> T) -> [T] {
         return map { fn($0) }
     }
