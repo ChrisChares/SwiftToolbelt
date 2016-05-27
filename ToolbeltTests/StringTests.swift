@@ -15,13 +15,18 @@ class StringTests: XCTestCase {
     func testIntValue() {
         let string = "42"
         expect(string.intValue!).to(equal(42))
+        
+        let string2 = "hairpiece"
+        expect(string2.intValue).to(beNil())
     }
     
     func testContains() {
         let string = "Make America Great Again"
         
+        expect(string.contains("")).to(beTruthy())
         expect(string.contains("America")).to(beTruthy())
         expect(string.contains("america")).to(beFalsy())
+        expect(string.contains("america", ignoreCase: true)).to(beTruthy())
     }
     
     func testSubscript() {
@@ -46,5 +51,11 @@ class StringTests: XCTestCase {
         string.insert("5", index: 3)
         string.insert("0", index: 0)
         expect(string).to(equal("0abc5"))
+    }
+    
+    func testRemove() {
+        var string = "abc"
+        string.removeAtIndex(0)
+        expect(string).to(equal("bc"))
     }
 }
