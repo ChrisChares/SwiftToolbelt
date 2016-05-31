@@ -82,6 +82,7 @@
 		83FBF1571CF8AFF7003783AF /* TypesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTests.swift; sourceTree = "<group>"; };
 		83FBF1591CF8B033003783AF /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		83FBF15B1CF8BC5A003783AF /* NSScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSScanner.swift; sourceTree = "<group>"; };
+		83FBF15D1CFDF0E3003783AF /* Toolbelt.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Toolbelt.podspec; path = ../Toolbelt.podspec; sourceTree = "<group>"; };
 		F965B770D13B043A68729AA9 /* Pods-Toolbelt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toolbelt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Toolbelt/Pods-Toolbelt.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +149,7 @@
 				83FBF1511CF76C6B003783AF /* Request / Result */,
 				832E023C1CF75A3800FB1A99 /* Toolbelt.h */,
 				832E023E1CF75A3800FB1A99 /* Info.plist */,
+				83FBF15D1CFDF0E3003783AF /* Toolbelt.podspec */,
 			);
 			path = Toolbelt;
 			sourceTree = "<group>";
