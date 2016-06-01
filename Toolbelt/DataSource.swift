@@ -22,7 +22,7 @@ public protocol Savable : Validatable {
     func save() -> Data
 }
 
-public class DataSource<T, E: Bindable where E.Data == T>: NSObject, UITableViewDataSource {
+public class DataSource<T, E: Bindable where E.Data == T>: NSObject, UITableViewDataSource, UICollectionViewDataSource {
     
     public override init() {
         super.init()
@@ -62,7 +62,28 @@ public class DataSource<T, E: Bindable where E.Data == T>: NSObject, UITableView
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return content.count
     }
+    
+    /*
+        UICollectionViewDataSource
+    */
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return content.count
+    }
+    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let data = dataForIndexPath(indexPath)
+        let cellID = cellIDForData(data)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! E
+        cell.bind(data)
+        return cell as! UICollectionViewCell
+    }
 }
+
+
+
+
 
 public class SearchableDataSource<T, E: Bindable where E.Data == T> : DataSource<T, E> {
     
