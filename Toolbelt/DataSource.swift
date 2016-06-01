@@ -23,7 +23,11 @@ public protocol Savable : Validatable {
 }
 
 public class DataSource<T, E: Bindable where E.Data == T>: NSObject, UITableViewDataSource {
-
+    
+    public override init() {
+        super.init()
+    }
+    
     public var content: [T] = []
     
     public func loadData(fn: (Result<[T]>) -> Void ) -> Void {
