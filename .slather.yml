@@ -1,0 +1,6 @@
+coverage_service: coveralls
+xcodeproj: Toolbelt.xcodeproj
+workspace: Toolbelt.xcworkspace
+scheme: Toolbelt
+ignore:
+  - Pods/*
