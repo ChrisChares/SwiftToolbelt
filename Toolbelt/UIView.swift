@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension UIView {
-    var snapshot : UIImage {
+public extension UIView {
+    public var snapshot : UIImage {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.mainScreen().scale)
         
         drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
