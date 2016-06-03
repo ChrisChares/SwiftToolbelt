@@ -17,4 +17,17 @@ public extension UIView {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    public func findSubviewOfType<T: UIView>() -> T? {
+        if self is T {
+            return self as? T
+        }
+        
+        for view in subviews {
+            if let result: T = view.findSubviewOfType() {
+                return result
+            }
+        }
+        return nil
+    }
 }
