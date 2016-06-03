@@ -42,4 +42,11 @@ public extension UIColor {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    public func colorWithSaturation(saturation: CGFloat) -> UIColor {
+        var (hue, previousSaturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
+        getHue(&hue, saturation: &previousSaturation, brightness: &brightness, alpha: &alpha)
+        
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+    }
 }
