@@ -32,6 +32,21 @@ public extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
     
+    public static func interpolate(from: UIColor, to: UIColor, fraction: Float)  -> UIColor {
+        
+        let f = CGFloat(min(1, max(0, fraction)))
+        
+        let start = CGColorGetComponents(from.CGColor)
+        let end = CGColorGetComponents(to.CGColor)
+        
+        let r = start[0] + (end[0] - start[0]) * f
+        let g = start[1] + (end[1] - start[1]) * f
+        let b = start[2] + (end[2] - start[2]) * f
+        let a = start[3] + (end[3] - start[3]) * f
+        
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+    
     public func asImage() -> UIImage {
         let rect = CGRectMake(0, 0, 1, 1)
         UIGraphicsBeginImageContext(rect.size)
