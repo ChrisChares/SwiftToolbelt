@@ -18,8 +18,8 @@ public struct GCD {
         dispatch_after(delayInNanoSeconds, mainQueue, fn)
     }
     
-    public static func dispatchAsync(fn: () -> Void) {
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+    public static func dispatchBackground(fn: () -> Void) {
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
         dispatch_async(queue, fn)
     }
     
