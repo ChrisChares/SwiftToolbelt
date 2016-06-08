@@ -13,8 +13,12 @@ public protocol Bindable {
     func bind(data: Data)
 }
 
+enum ValidationError {
+    case InvalidData(message: String)
+}
+
 public protocol Validatable {
-    func validate() -> Bool
+    func validate() throws
 }
 
 public protocol Savable : Validatable {
