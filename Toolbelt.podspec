@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Toolbelt"
-  s.version      = "0.2.3"
+  s.version      = "0.2.4"
   s.summary      = "A toolbelt of useful types and extensions for rapid Swift development"
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => 'https://github.com/ChrisChares/SwiftToolbelt.git', :tag => '0.2.3' }
+  s.source       = { :git => 'https://github.com/ChrisChares/SwiftToolbelt.git', :tag => '0.2.4' }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
