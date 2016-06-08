@@ -17,18 +17,19 @@
 		832E026A1CF763E600FB1A99 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02571CF763E600FB1A99 /* Dictionary.swift */; };
 		832E026C1CF763E600FB1A99 /* FormKeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02591CF763E600FB1A99 /* FormKeyboardHandler.swift */; };
 		832E026D1CF763E600FB1A99 /* Borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E025A1CF763E600FB1A99 /* Borders.swift */; };
-		832E026E1CF763E600FB1A99 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E025B1CF763E600FB1A99 /* Color.swift */; };
+		832E026E1CF763E600FB1A99 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E025B1CF763E600FB1A99 /* UIColor.swift */; };
 		832E026F1CF763E600FB1A99 /* QuickAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E025C1CF763E600FB1A99 /* QuickAlert.swift */; };
 		832E02701CF763E600FB1A99 /* Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E025D1CF763E600FB1A99 /* Corners.swift */; };
 		832E02711CF763E600FB1A99 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E025E1CF763E600FB1A99 /* Constraints.swift */; };
 		832E02721CF763E600FB1A99 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E025F1CF763E600FB1A99 /* String.swift */; };
 		832E02731CF763E600FB1A99 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02601CF763E600FB1A99 /* PaddedLabel.swift */; };
-		832E02741CF763E600FB1A99 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02611CF763E600FB1A99 /* Window.swift */; };
+		832E02741CF763E600FB1A99 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02611CF763E600FB1A99 /* UIWindow.swift */; };
 		832E02751CF763E600FB1A99 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02621CF763E600FB1A99 /* DynamicCollectionView.swift */; };
 		832E02761CF763E600FB1A99 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02631CF763E600FB1A99 /* GCD.swift */; };
 		832E02771CF763E600FB1A99 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02641CF763E600FB1A99 /* DataSource.swift */; };
 		832E02781CF763E600FB1A99 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02651CF763E600FB1A99 /* NSURL.swift */; };
 		83A32C081D00AD6B0038122E /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A32C071D00AD6B0038122E /* Math.swift */; };
+		8392C4BB1D02239A00BF30DB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8392C4BA1D02239A00BF30DB /* UIView.swift */; };
 		83FBF14C1CF76675003783AF /* SequenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF14B1CF76675003783AF /* SequenceType.swift */; };
 		83FBF1501CF76B40003783AF /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF14F1CF76B40003783AF /* Types.swift */; };
 		83FBF1561CF8AFB6003783AF /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF1551CF8AFB6003783AF /* SequenceTypeTests.swift */; };
@@ -66,18 +67,19 @@
 		832E02571CF763E600FB1A99 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		832E02591CF763E600FB1A99 /* FormKeyboardHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormKeyboardHandler.swift; sourceTree = "<group>"; };
 		832E025A1CF763E600FB1A99 /* Borders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Borders.swift; sourceTree = "<group>"; };
-		832E025B1CF763E600FB1A99 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		832E025B1CF763E600FB1A99 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		832E025C1CF763E600FB1A99 /* QuickAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAlert.swift; sourceTree = "<group>"; };
 		832E025D1CF763E600FB1A99 /* Corners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corners.swift; sourceTree = "<group>"; };
 		832E025E1CF763E600FB1A99 /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		832E025F1CF763E600FB1A99 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		832E02601CF763E600FB1A99 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
-		832E02611CF763E600FB1A99 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		832E02611CF763E600FB1A99 /* UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		832E02621CF763E600FB1A99 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		832E02631CF763E600FB1A99 /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		832E02641CF763E600FB1A99 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		832E02651CF763E600FB1A99 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		83A32C071D00AD6B0038122E /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		8392C4BA1D02239A00BF30DB /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		83FBF14B1CF76675003783AF /* SequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceType.swift; sourceTree = "<group>"; };
 		83FBF14F1CF76B40003783AF /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		83FBF1551CF8AFB6003783AF /* SequenceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTypeTests.swift; sourceTree = "<group>"; };
@@ -197,13 +199,14 @@
 		83FBF1471CF765B1003783AF /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				832E025B1CF763E600FB1A99 /* UIColor.swift */,
+				8392C4BA1D02239A00BF30DB /* UIView.swift */,
+				832E02611CF763E600FB1A99 /* UIWindow.swift */,
 				832E02621CF763E600FB1A99 /* DynamicCollectionView.swift */,
 				832E02601CF763E600FB1A99 /* PaddedLabel.swift */,
 				832E02591CF763E600FB1A99 /* FormKeyboardHandler.swift */,
 				832E02641CF763E600FB1A99 /* DataSource.swift */,
-				832E02611CF763E600FB1A99 /* Window.swift */,
 				832E025A1CF763E600FB1A99 /* Borders.swift */,
-				832E025B1CF763E600FB1A99 /* Color.swift */,
 				832E025C1CF763E600FB1A99 /* QuickAlert.swift */,
 				832E025D1CF763E600FB1A99 /* Corners.swift */,
 				832E025E1CF763E600FB1A99 /* Constraints.swift */,
@@ -449,6 +452,7 @@
 			files = (
 				83FBF14C1CF76675003783AF /* SequenceType.swift in Sources */,
 				832E02671CF763E600FB1A99 /* Result.swift in Sources */,
+				8392C4BB1D02239A00BF30DB /* UIView.swift in Sources */,
 				832E02721CF763E600FB1A99 /* String.swift in Sources */,
 				832E02751CF763E600FB1A99 /* DynamicCollectionView.swift in Sources */,
 				832E026D1CF763E600FB1A99 /* Borders.swift in Sources */,
@@ -464,11 +468,11 @@
 				832E02681CF763E600FB1A99 /* Request.swift in Sources */,
 				832E02691CF763E600FB1A99 /* Functions.swift in Sources */,
 				832E02771CF763E600FB1A99 /* DataSource.swift in Sources */,
-				832E02741CF763E600FB1A99 /* Window.swift in Sources */,
+				832E02741CF763E600FB1A99 /* UIWindow.swift in Sources */,
 				832E026C1CF763E600FB1A99 /* FormKeyboardHandler.swift in Sources */,
 				832E02661CF763E600FB1A99 /* CoreData.swift in Sources */,
 				832E02761CF763E600FB1A99 /* GCD.swift in Sources */,
-				832E026E1CF763E600FB1A99 /* Color.swift in Sources */,
+				832E026E1CF763E600FB1A99 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

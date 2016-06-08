@@ -6,6 +6,28 @@
 //  Copyright © 2016 303 Software. All rights reserved.
 //
 
+/*
+    Currying
+*/
+public func curry<A,B,C>(fn: (A,B) -> C) -> (A) -> (B) -> C {
+    return { a in
+        return { b in
+            fn(a,b)
+        }
+    }
+}
+
+public func curry<A,B,C,D>(fn: (A,B,C) -> D) -> (A) -> (B) -> (C) -> D {
+    return { a in
+        return { b in
+            return { c in
+                return fn(a,b,c)
+            }
+        }
+    }
+}
+
+
 //: Creates a function that invokes func, while it’s called less than n times. Subsequent calls to the created function return the result of the last func invocation.
 public func before<T>(n: Int, fn: () -> T) -> () -> T {
     guard n > 0 else {
