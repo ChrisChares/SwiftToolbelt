@@ -13,7 +13,7 @@ public protocol Bindable {
     func bind(data: Data)
 }
 
-enum ValidationError {
+public enum ValidationError {
     case InvalidData(message: String)
 }
 
