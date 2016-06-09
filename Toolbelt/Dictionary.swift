@@ -16,3 +16,19 @@ public extension Dictionary where Key: Comparable {
         }
     }
 }
+
+public extension Dictionary {
+    /*
+        Merge two dictionaries together.  The parameter dictionary's values will overwrite the receiver's if keys collide
+    */
+    public func merge(other: Dictionary) -> Dictionary {
+        var result = self
+        for (key, value) in other {
+            result[key] = value
+        }
+        return result
+    }
+}
+
+
+
