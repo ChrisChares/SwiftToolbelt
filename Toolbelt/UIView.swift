@@ -30,4 +30,19 @@ public extension UIView {
         }
         return nil
     }
+    
+    public func printSubviews() {
+        func indent(level: Int) -> String {
+            let array = Array<String>(count: level, repeatedValue: "  ")
+            return array.joinWithSeparator("")
+        }
+        func printSubviews(view: UIView, level: Int) {
+            print("\(indent(level))\(view)")
+            
+            for subview in view.subviews {
+                printSubviews(subview, level: level + 1)
+            }
+        }
+        printSubviews(self, level: 0)
+    }
 }

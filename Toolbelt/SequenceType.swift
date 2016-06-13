@@ -119,4 +119,20 @@ public extension SequenceType {
         }
         return maximums
     }
+    
+    /*:
+        Return the first `count` objects from a sequence
+    */
+    public func first(count: Int) -> [Generator.Element] {
+        var result: [Generator.Element] = []
+        var i = 0
+        for obj in self {
+            if i > count {
+                break
+            }
+            result.append(obj)
+            i += 1
+        }
+        return result
+    }
 }

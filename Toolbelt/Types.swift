@@ -21,3 +21,13 @@ public func cast<T>(value: AnyObject) throws -> T {
         throw TypeError.WrongType
     }
 }
+
+public extension SequenceType {
+    public func castAll<E>() -> [E] {
+        var result: [E] = []
+        for obj in self {
+            result.append(obj as! E)
+        }
+        return result
+    }
+}
