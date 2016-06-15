@@ -55,9 +55,7 @@ public func Request(req: URLRequestConvertible, fn: (Result<[JSON]>)-> Void) {
 }
 
 
-public func wrap<T>(cb: (Result<T>) -> Void, fn: () throws -> T) {
-    cb(Result({try fn()}))
-}
+
 
 public protocol ErrorParser {
     associatedtype T

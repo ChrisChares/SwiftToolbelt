@@ -104,3 +104,19 @@ public func ErrorOptional<T>(fn: () throws -> T) -> ErrorType? {
         return error
     }
 }
+
+public func wrap<T>(cb: (Result<T>) -> Void, fn: () throws -> T) {
+    cb(Result({try fn()}))
+}
+
+public func backgroundWrap<T>(cb: (Result<T>) -> Void, fn: () throws -> T) {
+    GCD.dispatchBackground {
+        do {
+            let result = try fn()
+            GCD.dispatchMain { cb(Result({result})) }
+        } catch let error {
+            GCD.dispatchMain { cb(Result({throw error})) }
+        }
+    }
+}
+
