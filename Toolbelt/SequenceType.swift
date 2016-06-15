@@ -135,4 +135,17 @@ public extension SequenceType {
         }
         return result
     }
+    
+    /*
+        Map with an index
+    */
+    public func indexMap<T>(fn: (Int, Generator.Element) -> T) -> [T] {
+        var result: [T] = []
+        for (index, obj) in enumerate() {
+            let mappedObject = fn(index, obj)
+            result.append(mappedObject)
+        }
+        return result
+    }
+    
 }
