@@ -17,4 +17,11 @@ class TypesTests: XCTestCase {
         expect { try cast(int) as Double }.toNot(throwError())
         expect { try cast(int) as String }.to(throwError(TypeError.WrongType))
     }
+    
+    func testUnpack() {
+        let json = ["key": 23]
+        expect { try unpack(json["key"]) as Int }.toNot(throwError())
+        expect { try unpack(json["key"]) as String }.to(throwError())
+        expect { try unpack(json["aklsjdlaksjd"]) as String }.to(throwError())
+    }
 }
