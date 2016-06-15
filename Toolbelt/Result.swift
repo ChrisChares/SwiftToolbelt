@@ -105,10 +105,15 @@ public func ErrorOptional<T>(fn: () throws -> T) -> ErrorType? {
     }
 }
 
+/*
+    Wrap makes async functions w/ callbacks less awkward as it lets you write in a more linear fashion
+*/
 public func wrap<T>(cb: (Result<T>) -> Void, fn: () throws -> T) {
     cb(Result({try fn()}))
 }
-
+/*
+    Background wrap works similiarly to wrap, except it performs the passed function on a background thread.  Results / errors are returned on the main thread
+ */
 public func backgroundWrap<T>(cb: (Result<T>) -> Void, fn: () throws -> T) {
     GCD.dispatchBackground {
         do {
