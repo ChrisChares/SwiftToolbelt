@@ -13,23 +13,38 @@ import Foundation
 
 */
 public protocol URLRequestConvertible {
-    var URLRequest: NSURLRequest { get }
+    var URLRequest: NSMutableURLRequest { get }
 }
 
+extension NSMutableURLRequest {
+    override public var URLRequest: NSMutableURLRequest { return self }
+}
+
+extension NSURLRequest : URLRequestConvertible {
+    public var URLRequest: NSMutableURLRequest { return mutableCopy() as! NSMutableURLRequest }
+}
+
+extension NSURL : URLRequestConvertible {
+    public var URLRequest : NSMutableURLRequest { return NSMutableURLRequest(URL: self) }
+}
+
+extension String : URLRequestConvertible {
+    public var URLRequest : NSMutableURLRequest { return NSMutableURLRequest(URL: NSURL(string: self)!) }
+}
 
 // For Responses that expect a JSON object at the top level
-public func Request(req: URLRequestConvertible, fn: (Result<JSON>)-> Void) {
+public func RequestJSON(req: URLRequestConvertible, validation: ValidationFunction = RequestValidationFunction, fn: (Result<JSON>)-> Void) {
     
     let session = NSURLSession.sharedSession()
     session.dataTaskWithRequest(req.URLRequest) { (data, response, error) in
         backgroundWrap(fn) {
             guard error == nil else { throw error! }
-            guard let data = data else { throw RequestError.NoResponseData }
-            guard let httpResponse = response as? NSHTTPURLResponse else { throw RequestError.NoResponseData }
+            guard let data = data else { throw APIError.NoResponseData }
+            guard let httpResponse = response as? NSHTTPURLResponse else { throw APIError.NoResponseData }
             
             let json = try cast(NSJSONSerialization.JSONObjectWithData(data, options: [])) as JSON
             
-            try validateResponse(httpResponse.statusCode, json: json)
+            try validation(httpResponse.statusCode, json)
             
             return json
         }
@@ -37,18 +52,16 @@ public func Request(req: URLRequestConvertible, fn: (Result<JSON>)-> Void) {
 }
 
 // For responses that expect an array of JSON objects at the top level
-public func Request(req: URLRequestConvertible, fn: (Result<[JSON]>)-> Void) {
+public func RequestJSONArray(req: URLRequestConvertible, validation: ValidationFunction = RequestValidationFunction, fn: (Result<[JSON]>)-> Void) {
     let session = NSURLSession.sharedSession()
     session.dataTaskWithRequest(req.URLRequest) { (data, response, error) in
         backgroundWrap(fn) {
             guard error == nil else { throw error! }
-            guard let data = data else { throw RequestError.NoResponseData }
-            guard let httpResponse = response as? NSHTTPURLResponse else { throw RequestError.NoResponseData }
+            guard let data = data else { throw APIError.NoResponseData }
+            guard let httpResponse = response as? NSHTTPURLResponse else { throw APIError.NoResponseData }
             
             let anyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-            if let json = anyObject as? JSON {
-                try validateResponse(httpResponse.statusCode, json: json)
-            }
+            try validation(httpResponse.statusCode, anyObject as? JSON)
             
             let jsonArray = try cast(anyObject) as [JSON]
             return jsonArray
@@ -56,19 +69,20 @@ public func Request(req: URLRequestConvertible, fn: (Result<[JSON]>)-> Void) {
     }.resume()
 }
 
-private func validateResponse(statusCode: Int, json: JSON) throws {
+public typealias ValidationFunction = (Int, JSON?) throws -> Void
+
+public var RequestValidationFunction: ValidationFunction = validateResponse
+
+private func validateResponse(statusCode: Int, json: JSON?) throws {
     guard statusCode < 400 else {
-        let message = json["message"] as? String ?? "An unknown error occured"
+        let message = json?["message"] as? String ?? "An unknown error occured"
         throw APIError.ServerError(code: statusCode, message: message)
     }
 }
 
-public enum RequestError : ErrorType {
-    case NoResponseData
-}
-
 public enum APIError : ErrorType {
     case ServerError(code: Int, message: String)
+    case NoResponseData
 }
 
 public enum ParsingError : ErrorType {
