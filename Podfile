@@ -4,7 +4,6 @@ inhibit_all_warnings!
 
 target 'Toolbelt' do
 
-pod 'Alamofire'
 pod 'JGProgressHUD'
 
 end

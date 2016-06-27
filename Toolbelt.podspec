@@ -133,7 +133,6 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "Alamofire", "~> 3.4.0"
   s.dependency "JGProgressHUD", "~> 1.3.2"
 
 end

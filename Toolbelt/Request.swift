@@ -8,29 +8,11 @@
 
 import Foundation
 
+
 /*:
     Wrappers, typealias and assorted functions to make dealing with JSON and networking requests less ugly
 
 */
-public protocol URLRequestConvertible {
-    var URLRequest: NSMutableURLRequest { get }
-}
-
-extension NSMutableURLRequest {
-    override public var URLRequest: NSMutableURLRequest { return self }
-}
-
-extension NSURLRequest : URLRequestConvertible {
-    public var URLRequest: NSMutableURLRequest { return mutableCopy() as! NSMutableURLRequest }
-}
-
-extension NSURL : URLRequestConvertible {
-    public var URLRequest : NSMutableURLRequest { return NSMutableURLRequest(URL: self) }
-}
-
-extension String : URLRequestConvertible {
-    public var URLRequest : NSMutableURLRequest { return NSMutableURLRequest(URL: NSURL(string: self)!) }
-}
 
 // For Responses that expect a JSON object at the top level
 public func RequestJSON(req: URLRequestConvertible, validation: ValidationFunction = RequestValidationFunction, fn: (Result<JSON>)-> Void) {

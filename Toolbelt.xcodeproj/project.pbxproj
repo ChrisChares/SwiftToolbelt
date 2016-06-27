@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60E1968D0041DA78B6AC55E4 /* Pods_Toolbelt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054078BFB19948718723E773 /* Pods_Toolbelt.framework */; };
+		40A8B694CE7B611E0D67B789 /* Pods_ToolbeltTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC34D92D98A9BF11F78086A /* Pods_ToolbeltTests.framework */; };
 		832E023D1CF75A3800FB1A99 /* Toolbelt.h in Headers */ = {isa = PBXBuildFile; fileRef = 832E023C1CF75A3800FB1A99 /* Toolbelt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		832E02441CF75A3800FB1A99 /* Toolbelt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832E02391CF75A3800FB1A99 /* Toolbelt.framework */; };
 		832E02661CF763E600FB1A99 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02531CF763E600FB1A99 /* CoreData.swift */; };
@@ -37,7 +37,8 @@
 		83FBF1581CF8AFF7003783AF /* TypesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF1571CF8AFF7003783AF /* TypesTests.swift */; };
 		83FBF15A1CF8B033003783AF /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF1591CF8B033003783AF /* StringTests.swift */; };
 		83FBF15C1CF8BC5A003783AF /* NSScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBF15B1CF8BC5A003783AF /* NSScanner.swift */; };
-		8425E77A280F64A79056E427 /* Pods_ToolbeltTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4639D91A0A7A51D58A5BD852 /* Pods_ToolbeltTests.framework */; };
+		83FCF0151D1DCB9C000011DE /* URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FCF0141D1DCB9C000011DE /* URLRequestConvertible.swift */; };
+		AAE93DD4FD3EB55952123508 /* Pods_Toolbelt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36DDF8C1E17AB0CC9D53AB7 /* Pods_Toolbelt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,11 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		054078BFB19948718723E773 /* Pods_Toolbelt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toolbelt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		26F87C44BD94945E334DC856 /* Pods-ToolbeltTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolbeltTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToolbeltTests/Pods-ToolbeltTests.release.xcconfig"; sourceTree = "<group>"; };
-		4639D91A0A7A51D58A5BD852 /* Pods_ToolbeltTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToolbeltTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		64DFA130ABE21AF0F4DFB4B7 /* Pods-ToolbeltTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolbeltTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToolbeltTests/Pods-ToolbeltTests.debug.xcconfig"; sourceTree = "<group>"; };
-		70048565144CDFD0BF5A03AC /* Pods-Toolbelt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toolbelt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Toolbelt/Pods-Toolbelt.release.xcconfig"; sourceTree = "<group>"; };
+		13BBC3547DC098EDD8A2E12F /* Pods-Toolbelt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toolbelt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Toolbelt/Pods-Toolbelt.release.xcconfig"; sourceTree = "<group>"; };
+		47390F5CCA1EE81001E2C096 /* Pods-ToolbeltTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolbeltTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToolbeltTests/Pods-ToolbeltTests.release.xcconfig"; sourceTree = "<group>"; };
 		832E02391CF75A3800FB1A99 /* Toolbelt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Toolbelt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		832E023C1CF75A3800FB1A99 /* Toolbelt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toolbelt.h; sourceTree = "<group>"; };
 		832E023E1CF75A3800FB1A99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,7 +88,11 @@
 		83FBF15B1CF8BC5A003783AF /* NSScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSScanner.swift; sourceTree = "<group>"; };
 		83FBF15D1CFDF0E3003783AF /* Toolbelt.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Toolbelt.podspec; path = ../Toolbelt.podspec; sourceTree = "<group>"; };
 		83FCF0131D1DA33E000011DE /* Test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Test.playground; sourceTree = "<group>"; };
-		F965B770D13B043A68729AA9 /* Pods-Toolbelt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toolbelt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Toolbelt/Pods-Toolbelt.debug.xcconfig"; sourceTree = "<group>"; };
+		83FCF0141D1DCB9C000011DE /* URLRequestConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestConvertible.swift; sourceTree = "<group>"; };
+		91E5AB7DCDA06BB66FD2A3A0 /* Pods-Toolbelt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toolbelt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Toolbelt/Pods-Toolbelt.debug.xcconfig"; sourceTree = "<group>"; };
+		A36DDF8C1E17AB0CC9D53AB7 /* Pods_Toolbelt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toolbelt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A40FF46F3956F0B57586D62E /* Pods-ToolbeltTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolbeltTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToolbeltTests/Pods-ToolbeltTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FCC34D92D98A9BF11F78086A /* Pods_ToolbeltTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToolbeltTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60E1968D0041DA78B6AC55E4 /* Pods_Toolbelt.framework in Frameworks */,
+				AAE93DD4FD3EB55952123508 /* Pods_Toolbelt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,24 +109,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				832E02441CF75A3800FB1A99 /* Toolbelt.framework in Frameworks */,
-				8425E77A280F64A79056E427 /* Pods_ToolbeltTests.framework in Frameworks */,
+				40A8B694CE7B611E0D67B789 /* Pods_ToolbeltTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A4E3998DE8A1A74351DD0B2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F965B770D13B043A68729AA9 /* Pods-Toolbelt.debug.xcconfig */,
-				70048565144CDFD0BF5A03AC /* Pods-Toolbelt.release.xcconfig */,
-				64DFA130ABE21AF0F4DFB4B7 /* Pods-ToolbeltTests.debug.xcconfig */,
-				26F87C44BD94945E334DC856 /* Pods-ToolbeltTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		832E022F1CF75A3800FB1A99 = {
 			isa = PBXGroup;
 			children = (
@@ -132,8 +123,8 @@
 				832E023B1CF75A3800FB1A99 /* Toolbelt */,
 				832E02471CF75A3800FB1A99 /* ToolbeltTests */,
 				832E023A1CF75A3800FB1A99 /* Products */,
-				0A4E3998DE8A1A74351DD0B2 /* Pods */,
-				BC88161AC2FFB5DF74BC61B0 /* Frameworks */,
+				A29D4EEB1D0680D9FF3BAB79 /* Pods */,
+				D067EDC96BEB9C719F65AAE5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,6 +231,7 @@
 			children = (
 				832E02541CF763E600FB1A99 /* Result.swift */,
 				832E02551CF763E600FB1A99 /* Request.swift */,
+				83FCF0141D1DCB9C000011DE /* URLRequestConvertible.swift */,
 			);
 			name = "Request / Result";
 			sourceTree = "<group>";
@@ -255,11 +247,22 @@
 			name = "Standard Library";
 			sourceTree = "<group>";
 		};
-		BC88161AC2FFB5DF74BC61B0 /* Frameworks */ = {
+		A29D4EEB1D0680D9FF3BAB79 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				054078BFB19948718723E773 /* Pods_Toolbelt.framework */,
-				4639D91A0A7A51D58A5BD852 /* Pods_ToolbeltTests.framework */,
+				91E5AB7DCDA06BB66FD2A3A0 /* Pods-Toolbelt.debug.xcconfig */,
+				13BBC3547DC098EDD8A2E12F /* Pods-Toolbelt.release.xcconfig */,
+				A40FF46F3956F0B57586D62E /* Pods-ToolbeltTests.debug.xcconfig */,
+				47390F5CCA1EE81001E2C096 /* Pods-ToolbeltTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D067EDC96BEB9C719F65AAE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A36DDF8C1E17AB0CC9D53AB7 /* Pods_Toolbelt.framework */,
+				FCC34D92D98A9BF11F78086A /* Pods_ToolbeltTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -282,12 +285,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 832E024D1CF75A3800FB1A99 /* Build configuration list for PBXNativeTarget "Toolbelt" */;
 			buildPhases = (
-				11146611934EAEDA6F4CEDC7 /* Check Pods Manifest.lock */,
+				1623F18D45AC535F844BDE39 /* 📦 Check Pods Manifest.lock */,
 				832E02341CF75A3800FB1A99 /* Sources */,
 				832E02351CF75A3800FB1A99 /* Frameworks */,
 				832E02361CF75A3800FB1A99 /* Headers */,
 				832E02371CF75A3800FB1A99 /* Resources */,
-				76BEC55CE4E6BA23B64A9229 /* Copy Pods Resources */,
+				222C891B3AB41F4E3688CFDD /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,12 +305,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 832E02501CF75A3800FB1A99 /* Build configuration list for PBXNativeTarget "ToolbeltTests" */;
 			buildPhases = (
-				C0ACA69D0F7A0DC8C16FF537 /* Check Pods Manifest.lock */,
+				950FB5FFB48F86BFAF25CA8B /* 📦 Check Pods Manifest.lock */,
 				832E023F1CF75A3800FB1A99 /* Sources */,
 				832E02401CF75A3800FB1A99 /* Frameworks */,
 				832E02411CF75A3800FB1A99 /* Resources */,
-				CC3C6C219CE4F6AAEDF1554C /* Embed Pods Frameworks */,
-				04D4B0A587508CF2ABAD6F7D /* Copy Pods Resources */,
+				4FE314292128A4F96625FB87 /* 📦 Embed Pods Frameworks */,
+				FE24C39985416B256D987B4D /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -373,29 +376,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		04D4B0A587508CF2ABAD6F7D /* Copy Pods Resources */ = {
+		1623F18D45AC535F844BDE39 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ToolbeltTests/Pods-ToolbeltTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		11146611934EAEDA6F4CEDC7 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,14 +391,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		76BEC55CE4E6BA23B64A9229 /* Copy Pods Resources */ = {
+		222C891B3AB41F4E3688CFDD /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,14 +406,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Toolbelt/Pods-Toolbelt-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C0ACA69D0F7A0DC8C16FF537 /* Check Pods Manifest.lock */ = {
+		4FE314292128A4F96625FB87 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ToolbeltTests/Pods-ToolbeltTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		950FB5FFB48F86BFAF25CA8B /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,19 +436,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CC3C6C219CE4F6AAEDF1554C /* Embed Pods Frameworks */ = {
+		FE24C39985416B256D987B4D /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ToolbeltTests/Pods-ToolbeltTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ToolbeltTests/Pods-ToolbeltTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -462,6 +465,7 @@
 				832E02751CF763E600FB1A99 /* DynamicCollectionView.swift in Sources */,
 				832E026D1CF763E600FB1A99 /* Borders.swift in Sources */,
 				832E02701CF763E600FB1A99 /* Corners.swift in Sources */,
+				83FCF0151D1DCB9C000011DE /* URLRequestConvertible.swift in Sources */,
 				83FBF15C1CF8BC5A003783AF /* NSScanner.swift in Sources */,
 				832E02781CF763E600FB1A99 /* NSURL.swift in Sources */,
 				832E02731CF763E600FB1A99 /* PaddedLabel.swift in Sources */,
@@ -596,7 +600,7 @@
 		};
 		832E024E1CF75A3800FB1A99 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F965B770D13B043A68729AA9 /* Pods-Toolbelt.debug.xcconfig */;
+			baseConfigurationReference = 91E5AB7DCDA06BB66FD2A3A0 /* Pods-Toolbelt.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -618,7 +622,7 @@
 		};
 		832E024F1CF75A3800FB1A99 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70048565144CDFD0BF5A03AC /* Pods-Toolbelt.release.xcconfig */;
+			baseConfigurationReference = 13BBC3547DC098EDD8A2E12F /* Pods-Toolbelt.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -639,7 +643,7 @@
 		};
 		832E02511CF75A3800FB1A99 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64DFA130ABE21AF0F4DFB4B7 /* Pods-ToolbeltTests.debug.xcconfig */;
+			baseConfigurationReference = A40FF46F3956F0B57586D62E /* Pods-ToolbeltTests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ToolbeltTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -650,7 +654,7 @@
 		};
 		832E02521CF75A3800FB1A99 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26F87C44BD94945E334DC856 /* Pods-ToolbeltTests.release.xcconfig */;
+			baseConfigurationReference = 47390F5CCA1EE81001E2C096 /* Pods-ToolbeltTests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ToolbeltTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

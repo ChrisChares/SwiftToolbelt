@@ -11,7 +11,7 @@ import Foundation
 /**
     A wrapper that allows us to utilize native Swift error handling (do - try - catch - defer) with asynchronous operations.  The idea is derived from Benedikt Terhechte's excellent post http://appventure.me/2015/06/19/swift-try-catch-asynchronous-closures/
 */
-public struct Result<T> {
+public class Result<T> {
     public typealias Eval = () throws -> T
     private let fn: Eval
     /**
