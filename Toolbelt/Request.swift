@@ -27,7 +27,6 @@ public func RequestJSON(req: URLRequestConvertible, validation: ValidationFuncti
             let json = try cast(NSJSONSerialization.JSONObjectWithData(data, options: [])) as JSON
             
             try validation(httpResponse.statusCode, json)
-            
             return json
         }
     }.resume()
@@ -71,5 +70,3 @@ public enum ParsingError : ErrorType {
     case InvalidJSON
     case NoValidObjects
 }
-
-
