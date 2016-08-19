@@ -9,50 +9,29 @@ platform :ios do
     scan
   end
 
+  desc "Do a patch release"
+  lane :release_patch do
+    test
+    
+    increment_build_number
+    increment_version_number(
+      bump_type: "patch"
+    )
+    version_bump_podspec(
+      path: "Toolbelt.podspec",
+      bump_type: "patch"
+    )
+
+    release
+
+  end
+
+
   desc "Build and release a new pod version"
   lane :release do
 
-    test
-    # ensure_git_status_clean
-    
-    # increment_build_number(
-    #   xcodeproj: "Denver.xcodeproj"
-    # )
-
-    # increment_version_number(
-    #   xcodeproj: "Denver.xcodeproj",
-    #   bump_type: "patch"
-    # )
-
-    # commit_version_bump(
-    #   xcodeproj: 'Denver.xcodeproj'
-    # )
-
-    # # Update code signing credentials
-    # match(type: "appstore") # more information: https://codesigning.guide
-
-    # # Builds
-    # gym(
-    #   scheme: "Denver",
-    #   use_legacy_build_api: true 
-    # )
-
-    # # Testflight
-    # pilot(
-    #   skip_waiting_for_build_processing: true,
-    #   changelog: changelog_from_git_commits
-    # )
-
-    # # Tag
-    # add_git_tag
-    # # Push
-    # push_to_git_remote(
-    #   tags: true
-    # )
-
-    # # To the moon!
-    # rocket
-
+    pod_lib_lint
+    # pod_push
   end
 
 end
