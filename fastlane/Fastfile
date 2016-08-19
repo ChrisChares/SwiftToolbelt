@@ -52,9 +52,26 @@ platform :ios do
       tag: podspec_version
     )
     
-    # Release
+    # Final linting
     pod_lib_lint
-    # pod_push
+
+    # Commit the version bumps
+    git_commit(
+      path: [
+        "./Toolbelt.podspec", 
+        "./Toolbelt.xcodeproj/project.pbxproj",
+        "./Toolbelt/Info.plist",
+        "./ToolbeltTests/Info.plist"
+      ],
+      message: "Version Bump"
+    )
+    
+    push_to_git_remote(
+      tags: true
+    )
+
+    pod_push
+    
   end
 
 end
