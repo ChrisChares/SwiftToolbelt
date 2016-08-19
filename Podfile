@@ -4,8 +4,6 @@ inhibit_all_warnings!
 
 target 'Toolbelt' do
 
-pod 'JGProgressHUD'
-
 end
 
 target 'ToolbeltTests' do
