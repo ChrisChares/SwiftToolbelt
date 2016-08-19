@@ -47,13 +47,13 @@ platform :ios do
     increment_version_number(
       version_number: podspec_version
     )
+    
+    # Final linting
+    pod_lib_lint
 
     add_git_tag(
       tag: podspec_version
     )
-    
-    # Final linting
-    pod_lib_lint
 
     # Commit the version bumps
     git_commit(
@@ -71,7 +71,7 @@ platform :ios do
     )
 
     pod_push
-    
+
   end
 
 end

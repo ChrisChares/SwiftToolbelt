@@ -11,11 +11,21 @@ sudo gem install fastlane
 fastlane ios test
 ```
 Runs all the tests
-### ios release
+### ios release_patch
 ```
-fastlane ios release
+fastlane ios release_patch
 ```
-Build and release a new pod version
+Do a patch release
+### ios release_minor
+```
+fastlane ios release_minor
+```
+Do a minor release
+### ios release_major
+```
+fastlane ios release_major
+```
+Do a major release
 
 ----
 
