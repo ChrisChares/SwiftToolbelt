@@ -37,8 +37,12 @@ public class RadioButtonGroup : UIControl {
     }
     
     public func buttonSelected(sender: UIButton) {
-        selectedIndex = sender.tag
+        guard selectedIndex != sender.tag else {
+            // Don't go through the motions if this button is already selected
+            return
+        }
         
+        selectedIndex = sender.tag
         sender.selected = true
         
         buttons.filter {
