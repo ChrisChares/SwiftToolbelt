@@ -51,11 +51,11 @@ public extension UIColor {
         let rect = CGRectMake(0, 0, 1, 1)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, CGColor)
-        CGContextFillRect(context, rect)
+        CGContextSetFillColorWithColor(context!, CGColor)
+        CGContextFillRect(context!, rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+        return image!
     }
     
     public func colorWithSaturation(saturation: CGFloat) -> UIColor {

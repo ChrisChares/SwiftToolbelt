@@ -95,24 +95,6 @@ public extension CoreData {
     }
 }
 
-
-public extension NSManagedObjectContext {
-    
-    public func countForFetchRequest(request: NSFetchRequest) throws -> Int {
-        var error: NSError?
-        let result = countForFetchRequest(request, error: &error)
-        
-        guard error == nil else {
-            throw error!
-        }
-
-        return result
-    }
-}
-
-
-
-
 /*
     Stuff from objc.io's Core Data book
 */
