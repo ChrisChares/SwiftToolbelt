@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Toolbelt"
-  s.version      = "0.7.0"
+  s.version      = "0.8.0"
   s.summary      = "A toolbelt of useful types and extensions for rapid Swift development"
 
   # This description is used to generate tags and improve search results.
