@@ -9,11 +9,11 @@
 import Foundation
 
 extension NSDate {
-    func isBefore(other: NSDate, slop: NSTimeInterval = 0) -> Bool {
+    public func isBefore(other: NSDate, slop: NSTimeInterval = 0) -> Bool {
         return timeIntervalSinceDate(other) < slop
     }
     
-    func isAfter(other: NSDate, slop: NSTimeInterval = 0) -> Bool {
+    public func isAfter(other: NSDate, slop: NSTimeInterval = 0) -> Bool {
         return timeIntervalSinceDate(other) > slop
     }
 }
