@@ -30,6 +30,8 @@
 		832E02781CF763E600FB1A99 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E02651CF763E600FB1A99 /* NSURL.swift */; };
 		83302E471D676AE500D6084D /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83302E461D676AE500D6084D /* RadioButtonGroup.swift */; };
 		835917D41D237D36008AFF7F /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835917D31D237D36008AFF7F /* Localization.swift */; };
+		836A82301DA6C80B0049A571 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A822F1DA6C80B0049A571 /* NSDate.swift */; };
+		836A82331DA6C8F50049A571 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A82321DA6C8F50049A571 /* NSDateTests.swift */; };
 		838FFF351D09EC6B00FE1F16 /* DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838FFF341D09EC6B00FE1F16 /* DictionaryTests.swift */; };
 		8392C4BB1D02239A00BF30DB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8392C4BA1D02239A00BF30DB /* UIView.swift */; };
 		83A32C081D00AD6B0038122E /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A32C071D00AD6B0038122E /* Math.swift */; };
@@ -81,6 +83,8 @@
 		832E02651CF763E600FB1A99 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		83302E461D676AE500D6084D /* RadioButtonGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
 		835917D31D237D36008AFF7F /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		836A822F1DA6C80B0049A571 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		836A82321DA6C8F50049A571 /* NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateTests.swift; sourceTree = "<group>"; };
 		838FFF341D09EC6B00FE1F16 /* DictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryTests.swift; sourceTree = "<group>"; };
 		8392C4BA1D02239A00BF30DB /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		83A32C071D00AD6B0038122E /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
@@ -161,10 +165,19 @@
 		832E02471CF75A3800FB1A99 /* ToolbeltTests */ = {
 			isa = PBXGroup;
 			children = (
+				836A82311DA6C8CF0049A571 /* Foundation */,
 				83FBF1541CF8AFA1003783AF /* Standard Library */,
 				832E024A1CF75A3800FB1A99 /* Info.plist */,
 			);
 			path = ToolbeltTests;
+			sourceTree = "<group>";
+		};
+		836A82311DA6C8CF0049A571 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				836A82321DA6C8F50049A571 /* NSDateTests.swift */,
+			);
+			name = Foundation;
 			sourceTree = "<group>";
 		};
 		83A32C061D00AD610038122E /* Math */ = {
@@ -228,6 +241,7 @@
 				832E02651CF763E600FB1A99 /* NSURL.swift */,
 				83FBF15B1CF8BC5A003783AF /* NSScanner.swift */,
 				835917D31D237D36008AFF7F /* Localization.swift */,
+				836A822F1DA6C80B0049A571 /* NSDate.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -470,6 +484,7 @@
 				832E02671CF763E600FB1A99 /* Result.swift in Sources */,
 				8392C4BB1D02239A00BF30DB /* UIView.swift in Sources */,
 				832E02721CF763E600FB1A99 /* String.swift in Sources */,
+				836A82301DA6C80B0049A571 /* NSDate.swift in Sources */,
 				832E02751CF763E600FB1A99 /* DynamicCollectionView.swift in Sources */,
 				832E026D1CF763E600FB1A99 /* Borders.swift in Sources */,
 				835917D41D237D36008AFF7F /* Localization.swift in Sources */,
@@ -503,6 +518,7 @@
 				838FFF351D09EC6B00FE1F16 /* DictionaryTests.swift in Sources */,
 				83FBF15A1CF8B033003783AF /* StringTests.swift in Sources */,
 				83FBF1581CF8AFF7003783AF /* TypesTests.swift in Sources */,
+				836A82331DA6C8F50049A571 /* NSDateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
