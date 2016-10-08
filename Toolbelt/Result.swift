@@ -45,7 +45,7 @@ open class Result<T> {
         For other situations where response doesn't matter, only errors do
     */
     open func rethrow() throws {
-        try fn()
+        _ = try fn()
     }
 }
 
@@ -98,7 +98,7 @@ public func ResultAccumulator<T>(_ fn: @escaping (Result<[T]>) -> Void) -> () ->
 
 public func ErrorOptional<T>(_ fn: () throws -> T) -> Error? {
     do {
-        try fn()
+        _ = try fn()
         return nil
     } catch let error {
         return error
@@ -115,12 +115,16 @@ public func wrap<T>(_ cb: (Result<T>) -> Void, fn: @escaping () throws -> T) {
     Background wrap works similiarly to wrap, except it performs the passed function on a background thread.  Results / errors are returned on the main thread
  */
 public func backgroundWrap<T>(_ cb: @escaping  (Result<T>) -> Void, fn: @escaping  () throws -> T) {
-    GCD.dispatchBackground {
+    
+    let main = DispatchQueue.main
+    let bg = DispatchQueue.global(qos: .background)
+    
+    bg.async {
         do {
             let result = try fn()
-            GCD.dispatchMain { cb(Result({result})) }
+            main.async { cb(Result({result})) }
         } catch let error {
-            GCD.dispatchMain { cb(Result({throw error})) }
+            main.async { cb(Result({throw error})) }
         }
     }
 }
