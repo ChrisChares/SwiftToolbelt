@@ -14,7 +14,7 @@ public extension String {
     public var intValue: Int? {
         return numberFormatter.number(from: self)?.intValue
     }
-    
+    /*  public now?
     public func contains(_ text: String, ignoreCase: Bool = false) -> Bool {
         guard text != "" else {
             return true
@@ -24,6 +24,7 @@ public extension String {
         if ignoreCase { options.formUnion(.caseInsensitive) }
         return self.range(of: text, options: options) != nil
     }
+ */
     
     public subscript (i: Int) -> Character {
         return self[self.characters.index(self.startIndex, offsetBy: i)]

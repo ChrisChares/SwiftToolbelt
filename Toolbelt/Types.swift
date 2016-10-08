@@ -20,7 +20,7 @@ public func cast<T>(_ value: Any) throws -> T {
     return obj
 }
 
-public func unpack<T>(_ value: AnyObject?) throws -> T {
+public func unpack<T>(_ value: Any?) throws -> T {
     guard let obj = value else { throw TypeError.nil }
     return try cast(obj) as T
 }

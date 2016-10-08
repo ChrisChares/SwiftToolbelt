@@ -8,7 +8,7 @@ end
 
 target 'ToolbeltTests' do
 
-pod 'Nimble', '~> 4.1.0'
+pod 'Nimble'
 
 end
 

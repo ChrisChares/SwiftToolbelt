@@ -676,7 +676,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A40FF46F3956F0B57586D62E /* Pods-ToolbeltTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ToolbeltTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.chares.ToolbeltTests;
@@ -689,7 +688,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47390F5CCA1EE81001E2C096 /* Pods-ToolbeltTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ToolbeltTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.chares.ToolbeltTests;
