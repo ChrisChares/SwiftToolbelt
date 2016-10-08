@@ -10,11 +10,11 @@ import UIKit
 
 public protocol Bindable {
     associatedtype Data
-    func bind(data: Data)
+    func bind(_ data: Data)
 }
 
-public enum ValidationError : ErrorType {
-    case InvalidData(message: String)
+public enum ValidationError : Error {
+    case invalidData(message: String)
 }
 
 public protocol Validatable {
@@ -26,60 +26,60 @@ public protocol Savable : Validatable {
     func save() -> Data
 }
 
-public class DataSource<T, E: Bindable where E.Data == T>: NSObject, UITableViewDataSource, UICollectionViewDataSource {
+open class DataSource<T, E: Bindable>: NSObject, UITableViewDataSource, UICollectionViewDataSource where E.Data == T {
     
     public override init() {
         super.init()
     }
     
-    public var content: [T] = []
+    open var content: [T] = []
     
-    public func loadData(fn: (Result<[T]>) -> Void ) -> Void {
+    open func loadData(_ fn: (Result<[T]>) -> Void ) -> Void {
         //default implementation just returns content
         fn(Result({self.content}))
     }
     
-    public func dataForIndexPath(indexPath: NSIndexPath) -> T {
-        return content[indexPath.row]
+    open func dataForIndexPath(_ indexPath: IndexPath) -> T {
+        return content[(indexPath as NSIndexPath).row]
     }
     
-    public func cellIDForData(data: T) -> String {
+    open func cellIDForData(_ data: T) -> String {
         return "Cell"
     }
     
     /*:
         UITableViewDataSource
     */
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = dataForIndexPath(indexPath)
         let cellID = cellIDForData(data)
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! E
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! E
         
         cell.bind(data)
         return cell as! UITableViewCell
     }
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return content.count
     }
     
     /*
         UICollectionViewDataSource
     */
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return content.count
     }
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let data = dataForIndexPath(indexPath)
         let cellID = cellIDForData(data)
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! E
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! E
         cell.bind(data)
         return cell as! UICollectionViewCell
     }
@@ -89,25 +89,25 @@ public class DataSource<T, E: Bindable where E.Data == T>: NSObject, UITableView
 
 
 
-public class SearchableDataSource<T, E: Bindable where E.Data == T> : DataSource<T, E> {
+open class SearchableDataSource<T, E: Bindable> : DataSource<T, E> where E.Data == T {
     
-    public var filteredContent: [T] = []
+    open var filteredContent: [T] = []
     
-    public override var content: [T] {
+    open override var content: [T] {
         didSet {
             filteredContent = content
         }
     }
     
-    public func filter(query: String?) {
+    open func filter(_ query: String?) {
         filteredContent = content
     }
     
-    public override func dataForIndexPath(indexPath: NSIndexPath) -> T {
-        return filteredContent[indexPath.row]
+    open override func dataForIndexPath(_ indexPath: IndexPath) -> T {
+        return filteredContent[(indexPath as NSIndexPath).row]
     }
     
-    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredContent.count
     }
 }

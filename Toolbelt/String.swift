@@ -8,36 +8,37 @@
 
 import Foundation
 
-private let numberFormatter = NSNumberFormatter()
+private let numberFormatter = NumberFormatter()
 
 public extension String {
     public var intValue: Int? {
-        return numberFormatter.numberFromString(self)?.integerValue
+        return numberFormatter.number(from: self)?.intValue
     }
     
-    public func contains(text: String, ignoreCase: Bool = false) -> Bool {
+    public func contains(_ text: String, ignoreCase: Bool = false) -> Bool {
         guard text != "" else {
             return true
         }
         
-        var options = NSStringCompareOptions()
-        if ignoreCase { options.unionInPlace(.CaseInsensitiveSearch) }
-        return self.rangeOfString(text, options: options) != nil
+        var options = NSString.CompareOptions()
+        if ignoreCase { options.formUnion(.caseInsensitive) }
+        return self.range(of: text, options: options) != nil
     }
     
     public subscript (i: Int) -> Character {
-        return self[self.startIndex.advancedBy(i)]
+        return self[self.characters.index(self.startIndex, offsetBy: i)]
     }
     
     public subscript (i: Int) -> String {
         return String(self[i] as Character)
     }
     
-    public subscript (r: Range <Int>) -> String {
-        let start = startIndex.advancedBy(r.startIndex)
-        let end = start.advancedBy(r.endIndex - r.startIndex)
-        return self[Range(start ..< end)]
-    }
+  //  public subscript (r: Range <Int>) -> String {
+   //     let start = characters.index(startIndex, offsetBy: r.lowerBound)
+    //    let end = start
+    //    let end = <#T##String.CharacterView corresponding to `start`##String.CharacterView#>.index(start, offsetBy: r.upperBound - r.lowerBound)
+//       return self[Range(start ..< end)]
+ //   }
     
     public var length: Int {
         return self.characters.count
@@ -47,7 +48,7 @@ public extension String {
         return length == 0 ? nil : self[length - 1]
     }
     
-    public mutating func insert(string: String, index: Int) -> String {
+    public mutating func insert(_ string: String, index: Int) -> String {
         if index == self.length {
             self += string
         } else {
@@ -57,7 +58,7 @@ public extension String {
         return self
     }
     
-    public mutating func removeAtIndex(i: Int) {
-        self.removeAtIndex(self.startIndex.advancedBy(i))
+    public mutating func removeAtIndex(_ i: Int) {
+        self.remove(at: self.characters.index(self.startIndex, offsetBy: i))
     }    
 }

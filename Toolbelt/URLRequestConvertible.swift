@@ -9,21 +9,25 @@
 import Foundation
 
 public protocol URLRequestConvertible {
-    var URLRequest: NSMutableURLRequest { get }
+    var request: URLRequest { get }
 }
 
-extension NSMutableURLRequest {
-    override public var URLRequest: NSMutableURLRequest { return self }
+
+extension Foundation.URLRequest : URLRequestConvertible {
+    public var request: URLRequest {
+        return self
+    }
 }
 
-extension NSURLRequest : URLRequestConvertible {
-    public var URLRequest: NSMutableURLRequest { return mutableCopy() as! NSMutableURLRequest }
-}
-
-extension NSURL : URLRequestConvertible {
-    public var URLRequest : NSMutableURLRequest { return NSMutableURLRequest(URL: self) }
+extension URL : URLRequestConvertible {
+    public var request : URLRequest {
+        return URLRequest(url: self)
+    }
 }
 
 extension String : URLRequestConvertible {
-    public var URLRequest : NSMutableURLRequest { return NSMutableURLRequest(URL: NSURL(string: self)!) }
+    public var request : URLRequest {
+        let url = URL(string: self)!
+        return URLRequest(url: url)
+    }
 }

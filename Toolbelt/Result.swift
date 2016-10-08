@@ -11,16 +11,16 @@ import Foundation
 /**
     A wrapper that allows us to utilize native Swift error handling (do - try - catch - defer) with asynchronous operations.  The idea is derived from Benedikt Terhechte's excellent post http://appventure.me/2015/06/19/swift-try-catch-asynchronous-closures/
 */
-public class Result<T> {
+open class Result<T> {
     public typealias Eval = () throws -> T
-    private let fn: Eval
+    fileprivate let fn: Eval
     /**
         Create a new Result struct with the function to be evaluated
      
         - Parameter fn: The function to evaluate
         - Returns: A new Result struct wrapping the function
     */
-    public init(_ fn: Eval) {
+    public init(_ fn: @escaping Eval) {
         self.fn = fn
     }
     /**
@@ -29,7 +29,7 @@ public class Result<T> {
         - Throws: Whatever error the original asynchronous action threw
         - Returns: The object associated with a success
     */
-    public func eval() throws -> T {
+    open func eval() throws -> T {
         return try fn()
     }
     
@@ -37,14 +37,14 @@ public class Result<T> {
     /**
         Evaluate the wrapped function and return an error optional based on result
     */
-    public var error: ErrorType? {
+    open var error: Error? {
         return ErrorOptional(eval)
     }
     
     /**
         For other situations where response doesn't matter, only errors do
     */
-    public func rethrow() throws {
+    open func rethrow() throws {
         try fn()
     }
 }
@@ -53,7 +53,7 @@ public class Result<T> {
     Maps any Result<E> to Result<Void>.  Useful for chaining
  
  */
-public func AnyResult<E>(fn: (Result<Void>) -> Void) -> (Result<E>) -> Void {
+public func AnyResult<E>(_ fn: @escaping (Result<Void>) -> Void) -> (Result<E>) -> Void {
     
     return { result in
         if let error = result.error {
@@ -67,7 +67,7 @@ public func AnyResult<E>(fn: (Result<Void>) -> Void) -> (Result<E>) -> Void {
 /**
     Creates one callback out of multiple of the same type
 */
-public func ResultAccumulator<T>(fn: (Result<[T]>) -> Void) -> () -> (Result<T>) -> Void {
+public func ResultAccumulator<T>(_ fn: @escaping (Result<[T]>) -> Void) -> () -> (Result<T>) -> Void {
     
     var results = [T]()
     var requestCount: Int = 0
@@ -96,7 +96,7 @@ public func ResultAccumulator<T>(fn: (Result<[T]>) -> Void) -> () -> (Result<T>)
     }
 }
 
-public func ErrorOptional<T>(fn: () throws -> T) -> ErrorType? {
+public func ErrorOptional<T>(_ fn: () throws -> T) -> Error? {
     do {
         try fn()
         return nil
@@ -108,13 +108,13 @@ public func ErrorOptional<T>(fn: () throws -> T) -> ErrorType? {
 /*
     Wrap makes async functions w/ callbacks less awkward as it lets you write in a more linear fashion
 */
-public func wrap<T>(cb: (Result<T>) -> Void, fn: () throws -> T) {
+public func wrap<T>(_ cb: (Result<T>) -> Void, fn: @escaping () throws -> T) {
     cb(Result({try fn()}))
 }
 /*
     Background wrap works similiarly to wrap, except it performs the passed function on a background thread.  Results / errors are returned on the main thread
  */
-public func backgroundWrap<T>(cb: (Result<T>) -> Void, fn: () throws -> T) {
+public func backgroundWrap<T>(_ cb: @escaping  (Result<T>) -> Void, fn: @escaping  () throws -> T) {
     GCD.dispatchBackground {
         do {
             let result = try fn()

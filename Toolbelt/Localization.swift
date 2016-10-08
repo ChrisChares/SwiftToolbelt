@@ -8,6 +8,6 @@
 
 import Foundation
 
-public func NSLocalizedString(key: String) -> String {
+public func NSLocalizedString(_ key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }

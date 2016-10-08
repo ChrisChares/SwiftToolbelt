@@ -16,15 +16,15 @@ public struct QuickAlert {
     public let alert : UIAlertController
     
     public init(msg: String, title: String? = nil) {
-        alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
     }
     /**
         Present the wrapped UIAlertController
      
         - Parameter vc: The UIViewController to present the UIAlertController from.  It is optional so you can use this from within closures with a weak self seamlessly
     */
-    public func show(vc: UIViewController?) -> Void {
-        vc?.presentViewController(alert, animated: true, completion: nil)
+    public func show(_ vc: UIViewController?) -> Void {
+        vc?.present(alert, animated: true, completion: nil)
     }
 }

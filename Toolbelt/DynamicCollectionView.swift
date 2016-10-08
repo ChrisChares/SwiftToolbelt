@@ -10,17 +10,17 @@ import UIKit
 /*:
  A UICollectionView subclass that resizes to accomodate its contents
 */
-public class DynamicCollectionView : UICollectionView {
+open class DynamicCollectionView : UICollectionView {
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
-        if CGSizeEqualToSize(bounds.size, intrinsicContentSize()) == false {
+        if bounds.size.equalTo(intrinsicContentSize) == false {
             invalidateIntrinsicContentSize()
         }
     }
     
-    public override func intrinsicContentSize() -> CGSize {
+    open override var intrinsicContentSize : CGSize {
         return contentSize
     }
 }

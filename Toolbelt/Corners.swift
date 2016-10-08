@@ -9,16 +9,16 @@
 import UIKit
 
 public extension UIView {
-    public func roundCorners(corners: UIRectCorner, radii: CGFloat) {
+    public func roundCorners(_ corners: UIRectCorner, radii: CGFloat) {
         //UIButton required this
         layer.cornerRadius = 0.0
         
-        let sizeRadii = CGSizeMake(radii, radii)
+        let sizeRadii = CGSize(width: radii, height: radii)
         let shapePath = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: sizeRadii)
         
         let newCornerLayer = CAShapeLayer()
         newCornerLayer.frame = bounds
-        newCornerLayer.path = shapePath.CGPath
+        newCornerLayer.path = shapePath.cgPath
         layer.mask = newCornerLayer
     }
 }

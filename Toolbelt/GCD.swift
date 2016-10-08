@@ -10,21 +10,21 @@ import Foundation
 
 public struct GCD {
     //: In seconds
-    public static func dispatchAfter(seconds delay: Double, fn:() -> Void) {
+    public static func dispatchAfter(seconds delay: Double, fn:@escaping () -> Void) {
         
-        let delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        let mainQueue = dispatch_get_main_queue()
+        let delayInNanoSeconds = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let mainQueue = DispatchQueue.main
         
-        dispatch_after(delayInNanoSeconds, mainQueue, fn)
+        mainQueue.asyncAfter(deadline: delayInNanoSeconds, execute: fn)
     }
     
-    public static func dispatchBackground(fn: () -> Void) {
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
-        dispatch_async(queue, fn)
+    public static func dispatchBackground(_ fn: @escaping () -> Void) {
+        let queue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background)
+        queue.async(execute: fn)
     }
     
-    public static func dispatchMain(fn: () -> Void) {
-        let queue = dispatch_get_main_queue()
-        dispatch_async(queue, fn)
+    public static func dispatchMain(_ fn: @escaping () -> Void) {
+        let queue = DispatchQueue.main
+        queue.async(execute: fn)
     }
 }

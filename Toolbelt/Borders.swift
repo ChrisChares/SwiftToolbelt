@@ -9,33 +9,33 @@
 import UIKit
 
 public enum BorderSide {
-    case Left
-    case Top
-    case Right
-    case Bottom
+    case left
+    case top
+    case right
+    case bottom
 }
 
 public extension UIView {
     
-    public func addBorder(side: BorderSide, width: CGFloat, color: UIColor) -> CALayer {
+    public func addBorder(_ side: BorderSide, width: CGFloat, color: UIColor) -> CALayer {
         let layer = CALayer()
-        layer.backgroundColor = color.CGColor
+        layer.backgroundColor = color.cgColor
         layer.frame = frameForSide(side, width: width)
         self.layer.addSublayer(layer)
         return layer
     }
     
-    private func frameForSide(side: BorderSide, width: CGFloat) -> CGRect {
+    fileprivate func frameForSide(_ side: BorderSide, width: CGFloat) -> CGRect {
         
         switch side {
-        case .Left:
-            return CGRectMake(0, 0, width, CGRectGetHeight(frame))
-        case .Top:
-            return CGRectMake(0, 0, CGRectGetWidth(frame), width)
-        case .Right:
-            return CGRectMake(CGRectGetWidth(frame), 0, width, CGRectGetHeight(frame))
-        case .Bottom:
-            return CGRectMake(0, CGRectGetHeight(frame), CGRectGetWidth(frame), width)
+        case .left:
+            return CGRect(x: 0, y: 0, width: width, height: frame.height)
+        case .top:
+            return CGRect(x: 0, y: 0, width: frame.width, height: width)
+        case .right:
+            return CGRect(x: frame.width, y: 0, width: width, height: frame.height)
+        case .bottom:
+            return CGRect(x: 0, y: frame.height, width: frame.width, height: width)
         }
     }
 }
