@@ -8,24 +8,24 @@
 
 import Foundation
 
-public typealias JSON = [String: AnyObject]
+public typealias JSON = [String: Any]
 
-public enum TypeError : ErrorType {
-    case WrongType
-    case Nil
+public enum TypeError : Error {
+    case wrongType
+    case `nil`
 }
 
-public func cast<T>(value: AnyObject) throws -> T {
-    guard let obj = value as? T else { throw TypeError.WrongType }
+public func cast<T>(_ value: Any) throws -> T {
+    guard let obj = value as? T else { throw TypeError.wrongType }
     return obj
 }
 
-public func unpack<T>(value: AnyObject?) throws -> T {
-    guard let obj = value else { throw TypeError.Nil }
+public func unpack<T>(_ value: Any?) throws -> T {
+    guard let obj = value else { throw TypeError.nil }
     return try cast(obj) as T
 }
 
-public extension SequenceType {
+public extension Sequence {
     public func castAll<E>() -> [E] {
         var result: [E] = []
         for obj in self {

@@ -13,20 +13,20 @@ import Nimble
 class NSDateTests: XCTestCase {
     
     func testIsBefore() {
-        let date = NSDate()
+        let date = Date()
         
-        let afterDate = date.dateByAddingTimeInterval(100)
-        let beforeDate = date.dateByAddingTimeInterval(-100)
+        let afterDate = date.addingTimeInterval(100)
+        let beforeDate = date.addingTimeInterval(-100)
         
         expect(date.isBefore(afterDate)).to(beTruthy())
         expect(date.isBefore(beforeDate)).to(beFalsy())
     }
     
     func testIsAfter() {
-        let date = NSDate()
+        let date = Date()
         
-        let afterDate = date.dateByAddingTimeInterval(100)
-        let beforeDate = date.dateByAddingTimeInterval(-100)
+        let afterDate = date.addingTimeInterval(100)
+        let beforeDate = date.addingTimeInterval(-100)
         
         expect(date.isAfter(afterDate)).to(beFalsy())
         expect(date.isAfter(beforeDate)).to(beTruthy())

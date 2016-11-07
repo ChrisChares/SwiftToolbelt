@@ -16,7 +16,7 @@ public extension UIView {
         for view in subviews {
             view.deactivateAllConstraints()
         }
-        NSLayoutConstraint.deactivateConstraints(constraints)
+        NSLayoutConstraint.deactivate(constraints)
     }
     
     public func activateAllConstraints() {
@@ -25,6 +25,6 @@ public extension UIView {
         for view in subviews {
             view.activateAllConstraints()
         }
-        NSLayoutConstraint.activateConstraints(constraints)
+        NSLayoutConstraint.activate(constraints)
     }
 }

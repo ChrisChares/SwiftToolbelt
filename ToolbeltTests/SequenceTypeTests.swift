@@ -46,7 +46,7 @@ class SequenceTypeTests: XCTestCase {
     }
     
     func testFilterByType() {
-        let array = [1,2,"Rick","Morty"]
+        let array = [1,2,"Rick","Morty"] as [Any]
         let integers = array.filterByType() as [Int]
         let strings = array.filterByType() as [String]
         

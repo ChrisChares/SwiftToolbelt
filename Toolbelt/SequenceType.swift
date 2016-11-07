@@ -6,11 +6,11 @@
 //  Copyright © 2016 Chris Chares. All rights reserved.
 //
 
-public extension SequenceType {
+public extension Sequence {
     /*:
         Returns the first object the passed function returns true for
     */
-    public func find(fn: (Generator.Element) -> Bool) -> Generator.Element? {
+    public func find(_ fn: (Iterator.Element) -> Bool) -> Iterator.Element? {
         for element in self {
             if fn(element) {
                 return element
@@ -19,9 +19,9 @@ public extension SequenceType {
         return nil
     }
     
-    public func divide(fn: (Generator.Element) -> Bool) -> (slice: [Generator.Element], remainder: [Generator.Element]) {
-        var slice : [Generator.Element] = []
-        var remainder: [Generator.Element] = []
+    public func divide(_ fn: (Iterator.Element) -> Bool) -> (slice: [Iterator.Element], remainder: [Iterator.Element]) {
+        var slice : [Iterator.Element] = []
+        var remainder: [Iterator.Element] = []
         
         for item in self {
             if fn(item) {
@@ -34,8 +34,8 @@ public extension SequenceType {
     }
     
     
-    public func groupBy<T: Hashable>(fn: (Generator.Element) -> T) -> [T: [Generator.Element]] {
-        var dictionary: [T: [Generator.Element]] = [:]
+    public func groupBy<T: Hashable>(_ fn: (Iterator.Element) -> T) -> [T: [Iterator.Element]] {
+        var dictionary: [T: [Iterator.Element]] = [:]
         
         for item in self {
             let grouper = fn(item)
@@ -49,11 +49,11 @@ public extension SequenceType {
         return dictionary
     }
     
-    public func chunk(size: Int) -> [[Generator.Element]] {
+    public func chunk(_ size: Int) -> [[Iterator.Element]] {
         var i = 0
-        var result :[[Generator.Element]] = []
+        var result :[[Iterator.Element]] = []
         
-        var xs : [Generator.Element] = []
+        var xs : [Iterator.Element] = []
         for item in self {
             xs.append(item)
             if i % size == 0 && i != 0 {
@@ -71,9 +71,9 @@ public extension SequenceType {
     /*
      Sort by a chosen property
      */
-    public func sortByProperty<T: Comparable>(ascending: Bool = true, fn: (Generator.Element) -> T) -> [Generator.Element] {
+    public func sortByProperty<T: Comparable>(_ ascending: Bool = true, fn: (Iterator.Element) -> T) -> [Iterator.Element] {
         
-        return sort {
+        return sorted {
             let a = fn($0)
             let b = fn($1)
             
@@ -87,13 +87,13 @@ public extension SequenceType {
     /*:
      Create a new array by plucking a value from each object in the existing array
      */
-    public func pluck<T>(fn: (Generator.Element) -> T) -> [T] {
+    public func pluck<T>(_ fn: (Iterator.Element) -> T) -> [T] {
         return map { fn($0) }
     }
     
-    public func filterMax<E: protocol<Comparable, Hashable>>(fn:(Generator.Element) -> E?) -> [Generator.Element] {
+    public func filterMax<E: Comparable & Hashable>(_ fn:(Iterator.Element) -> E?) -> [Iterator.Element] {
         
-        var maximums: [Generator.Element] = []
+        var maximums: [Iterator.Element] = []
         var max: E? = nil
         
         for obj in self {
@@ -123,8 +123,8 @@ public extension SequenceType {
     /*:
         Return the first `count` objects from a sequence
     */
-    public func first(count: Int) -> [Generator.Element] {
-        var result: [Generator.Element] = []
+    public func first(_ count: Int) -> [Iterator.Element] {
+        var result: [Iterator.Element] = []
         var i = 0
         for obj in self {
             if i > count {
@@ -139,9 +139,9 @@ public extension SequenceType {
     /*
         Map with an index
     */
-    public func indexMap<T>(fn: (Int, Generator.Element) -> T) -> [T] {
+    public func indexMap<T>(_ fn: (Int, Iterator.Element) -> T) -> [T] {
         var result: [T] = []
-        for (index, obj) in enumerate() {
+        for (index, obj) in enumerated() {
             let mappedObject = fn(index, obj)
             result.append(mappedObject)
         }

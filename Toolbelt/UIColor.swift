@@ -15,9 +15,9 @@ public extension UIColor {
         - Returns: A UIColor representation of the hex string
     */
     public convenience init(hexString: String) {
-        let hex = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
+        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
-        NSScanner(string: hex).scanHexInt(&int)
+        Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
         switch hex.characters.count {
         case 3: // RGB (12-bit)
@@ -32,33 +32,33 @@ public extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
     
-    public static func interpolate(from: UIColor, to: UIColor, fraction: Float)  -> UIColor {
+    public static func interpolate(_ from: UIColor, to: UIColor, fraction: Float)  -> UIColor {
         
         let f = CGFloat(min(1, max(0, fraction)))
         
-        let start = CGColorGetComponents(from.CGColor)
-        let end = CGColorGetComponents(to.CGColor)
+        let start = from.cgColor.components
+        let end = to.cgColor.components
         
-        let r = start[0] + (end[0] - start[0]) * f
-        let g = start[1] + (end[1] - start[1]) * f
-        let b = start[2] + (end[2] - start[2]) * f
-        let a = start[3] + (end[3] - start[3]) * f
+        let r = (start?[0])! + ((end?[0])! - (start?[0])!) * f
+        let g = (start?[1])! + ((end?[1])! - (start?[1])!) * f
+        let b = (start?[2])! + ((end?[2])! - (start?[2])!) * f
+        let a = (start?[3])! + ((end?[3])! - (start?[3])!) * f
         
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
     
     public func asImage() -> UIImage {
-        let rect = CGRectMake(0, 0, 1, 1)
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context!, CGColor)
-        CGContextFillRect(context!, rect)
+        context!.setFillColor(cgColor)
+        context!.fill(rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
     }
     
-    public func colorWithSaturation(saturation: CGFloat) -> UIColor {
+    public func colorWithSaturation(_ saturation: CGFloat) -> UIColor {
         var (hue, previousSaturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
         getHue(&hue, saturation: &previousSaturation, brightness: &brightness, alpha: &alpha)
         

@@ -15,58 +15,59 @@ import Foundation
 */
 
 // For Responses that expect a JSON object at the top level
-public func RequestJSON(req: URLRequestConvertible, validation: ValidationFunction = RequestValidationFunction, fn: (Result<JSON>)-> Void) {
+public func RequestJSON(_ req: URLRequestConvertible, validation: @escaping ValidationFunction = RequestValidationFunction, fn: @escaping (Result<JSON>)-> Void) {
     
-    let session = NSURLSession.sharedSession()
-    session.dataTaskWithRequest(req.URLRequest) { (data, response, error) in
+    let session = URLSession.shared
+    session.dataTask(with: req.request, completionHandler: { (data, response, error) in
         backgroundWrap(fn) {
             guard error == nil else { throw error! }
-            guard let data = data else { throw APIError.NoResponseData }
-            guard let httpResponse = response as? NSHTTPURLResponse else { throw APIError.NoResponseData }
+            guard let data = data else { throw APIError.noResponseData }
+            guard let httpResponse = response as? HTTPURLResponse else { throw APIError.noResponseData }
             
-            let json = try cast(NSJSONSerialization.JSONObjectWithData(data, options: [])) as JSON
+            let any = try JSONSerialization.jsonObject(with: data, options: [])
+            let json = try cast(any) as JSON
             
             try validation(httpResponse.statusCode, json)
             return json
         }
-    }.resume()
+    }) .resume()
 }
 
 // For responses that expect an array of JSON objects at the top level
-public func RequestJSONArray(req: URLRequestConvertible, validation: ValidationFunction = RequestValidationFunction, fn: (Result<[JSON]>)-> Void) {
-    let session = NSURLSession.sharedSession()
-    session.dataTaskWithRequest(req.URLRequest) { (data, response, error) in
+public func RequestJSONArray(_ req: URLRequestConvertible, validation: @escaping ValidationFunction = RequestValidationFunction, fn: @escaping (Result<[JSON]>)-> Void) {
+    let session = URLSession.shared
+    session.dataTask(with: req.request, completionHandler: { (data, response, error) in
         backgroundWrap(fn) {
             guard error == nil else { throw error! }
-            guard let data = data else { throw APIError.NoResponseData }
-            guard let httpResponse = response as? NSHTTPURLResponse else { throw APIError.NoResponseData }
+            guard let data = data else { throw APIError.noResponseData }
+            guard let httpResponse = response as? HTTPURLResponse else { throw APIError.noResponseData }
             
-            let anyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            let anyObject = try JSONSerialization.jsonObject(with: data, options: [])
             try validation(httpResponse.statusCode, anyObject as? JSON)
             
             let jsonArray = try cast(anyObject) as [JSON]
             return jsonArray
         }
-    }.resume()
+    }) .resume()
 }
 
 public typealias ValidationFunction = (Int, JSON?) throws -> Void
 
 public var RequestValidationFunction: ValidationFunction = validateResponse
 
-private func validateResponse(statusCode: Int, json: JSON?) throws {
+private func validateResponse(_ statusCode: Int, json: JSON?) throws {
     guard statusCode < 400 else {
         let message = json?["message"] as? String ?? "An unknown error occured"
-        throw APIError.ServerError(code: statusCode, message: message)
+        throw APIError.serverError(code: statusCode, message: message)
     }
 }
 
-public enum APIError : ErrorType {
-    case ServerError(code: Int, message: String)
-    case NoResponseData
+public enum APIError : Error {
+    case serverError(code: Int, message: String)
+    case noResponseData
 }
 
-public enum ParsingError : ErrorType {
-    case InvalidJSON
-    case NoValidObjects
+public enum ParsingError : Error {
+    case invalidJSON
+    case noValidObjects
 }

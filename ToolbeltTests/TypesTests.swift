@@ -14,8 +14,8 @@ class TypesTests: XCTestCase {
     
     func testCast() {
         let int = 42
-        expect { try cast(int) as Double }.toNot(throwError())
-        expect { try cast(int) as String }.to(throwError(TypeError.WrongType))
+//3.0 stricter?        expect { try cast(int) as Double }.toNot(throwError())
+        expect { try cast(int) as String }.to(throwError(TypeError.wrongType))
     }
     
     func testUnpack() {

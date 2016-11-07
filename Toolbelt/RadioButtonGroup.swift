@@ -6,8 +6,8 @@
 //  Copyright © 2016 303 Software. All rights reserved.
 //
 
-public class Weak<T: AnyObject> {
-    public weak var value: T?
+open class Weak<T: AnyObject> {
+    open weak var value: T?
     public init(value: T) {
         self.value = value
     }
@@ -15,35 +15,35 @@ public class Weak<T: AnyObject> {
 
 import UIKit
 
-public class RadioButtonGroup : UIControl {
+open class RadioButtonGroup : UIControl {
     
-    public var buttons: [Weak<UIButton>] = []
+    open var buttons: [Weak<UIButton>] = []
     
-    public var selectedIndex : Int? = nil {
+    open var selectedIndex : Int? = nil {
         didSet {
-            self.sendActionsForControlEvents(.ValueChanged)
+            self.sendActions(for: .valueChanged)
         }
     }
     
-    public var selectedButton: UIButton? {
+    open var selectedButton: UIButton? {
         guard let selectedIndex = selectedIndex else { return nil }
         return buttons.find { $0.value?.tag == selectedIndex }?.value
     }
     
-    public func addButton(button: UIButton) {
+    open func addButton(_ button: UIButton) {
         button.tag = buttons.count
-        button.addTarget(self, action: #selector(RadioButtonGroup.buttonSelected(_:)), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(RadioButtonGroup.buttonSelected(_:)), for: .touchUpInside)
         buttons.append(Weak(value: button))
     }
     
-    public func buttonSelected(sender: UIButton) {
+    open func buttonSelected(_ sender: UIButton) {
         guard selectedIndex != sender.tag else {
             // Don't go through the motions if this button is already selected
             return
         }
         
         selectedIndex = sender.tag
-        sender.selected = true
+        sender.isSelected = true
         
         buttons.filter {
             if let button = $0.value {
@@ -51,7 +51,7 @@ public class RadioButtonGroup : UIControl {
             } else { return false }
             }.forEach { wrapper in
                 if let button = wrapper.value {
-                    button.selected = false
+                    button.isSelected = false
                 }
         }
     }

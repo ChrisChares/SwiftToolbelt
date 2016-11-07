@@ -8,12 +8,12 @@
 
 import Foundation
 
-extension NSDate {
-    public func isBefore(other: NSDate, slop: NSTimeInterval = 0) -> Bool {
-        return timeIntervalSinceDate(other) < slop
+extension Date {
+    public func isBefore(_ other: Date, slop: TimeInterval = 0) -> Bool {
+        return timeIntervalSince(other) < slop
     }
     
-    public func isAfter(other: NSDate, slop: NSTimeInterval = 0) -> Bool {
-        return timeIntervalSinceDate(other) > slop
+    public func isAfter(_ other: Date, slop: TimeInterval = 0) -> Bool {
+        return timeIntervalSince(other) > slop
     }
 }

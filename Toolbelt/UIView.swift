@@ -10,9 +10,9 @@ import UIKit
 
 public extension UIView {
     public var snapshot : UIImage {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.mainScreen().scale)
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
         
-        drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
@@ -32,11 +32,11 @@ public extension UIView {
     }
     
     public func printSubviews() {
-        func indent(level: Int) -> String {
-            let array = Array<String>(count: level, repeatedValue: "  ")
-            return array.joinWithSeparator("")
+        func indent(_ level: Int) -> String {
+            let array = Array<String>(repeating: "  ", count: level)
+            return array.joined(separator: "")
         }
-        func printSubviews(view: UIView, level: Int) {
+        func printSubviews(_ view: UIView, level: Int) {
             print("\(indent(level))\(view)")
             
             for subview in view.subviews {

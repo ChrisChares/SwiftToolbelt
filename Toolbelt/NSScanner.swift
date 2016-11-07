@@ -8,10 +8,10 @@
 
 import Foundation
 
-public extension NSScanner {
+public extension Scanner {
     public func scanInt() -> Int? {
         var int : CInt = 0
-        let didScan = scanInt(&int)
+        let didScan = scanInt32(&int)
         return didScan ? Int(int) : nil
     }
     
@@ -21,7 +21,7 @@ public extension NSScanner {
         return didScan ? Double(double) : nil
     }
     
-    public func scanRawRepresentableUpToCharacters<T: RawRepresentable where T.RawValue == String>(toCharacters: NSCharacterSet) -> T? {
+    public func scanRawRepresentableUpToCharacters<T: RawRepresentable>(_ toCharacters: CharacterSet) -> T? where T.RawValue == String {
         if let raw = scanUpToCharacters(toCharacters) {
             return T(rawValue: raw)
         } else {
@@ -29,30 +29,31 @@ public extension NSScanner {
         }
     }
     
-    public func scan(token : String) -> Bool {
-        return scanString(token, intoString: nil)
+    public func scan(_ token : String) -> Bool {
+        return scanString(token, into: nil)
     }
     
-    public func scanUpToString(toString: String) -> String? {
+    public func scanUpToString(_ toString: String) -> String? {
         var string : NSString?
-        scanUpToString(toString, intoString: &string)
+        scanUpTo(toString, into: &string)
         return string as? String
     }
     
-    public func scanUpToCharacters(toCharacters: NSCharacterSet) -> String? {
+    public func scanUpToCharacters(_ toCharacters: CharacterSet) -> String? {
         var string : NSString?
-        scanUpToCharactersFromSet(toCharacters, intoString: &string)
+        self.scanUpToCharacters(from: toCharacters, into: &string)
         return string as? String
     }
 }
 
-public extension _ArrayType where Generator.Element == String {
-    public func scanMap<E>(config: ((String) -> NSScanner)?, fn: (NSScanner) -> E) -> [E] {
+/*
+public extension _ArrayType where Iterator.Element == String {
+    public func scanMap<E>(_ config: ((String) -> Scanner)?, fn: (Scanner) -> E) -> [E] {
         
-        var configFunction: ((String) -> NSScanner)! = config
+        var configFunction: ((String) -> Scanner)! = config
         if configFunction == nil {
             configFunction = { string in
-                return NSScanner(string: string)
+                return Scanner(string: string)
             }
         }
         
@@ -64,3 +65,4 @@ public extension _ArrayType where Generator.Element == String {
         return xs
     }
 }
+*/
