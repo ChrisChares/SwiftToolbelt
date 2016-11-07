@@ -148,4 +148,17 @@ public extension SequenceType {
         return result
     }
     
+    public func match<E, T>(xs: [E], ys: [T], fn: (E, T) -> Bool) -> [(E, T)] {
+        var results = [(E, T)]()
+        //: OPTIMIZE
+        // O(n^3)  There's probably a much better way to do this.  It probably involves sets
+        for x in xs {
+            for y in ys {
+                if fn(x, y) {
+                    results.append(x, y)
+                }
+            }
+        }
+        return results
+    }
 }
