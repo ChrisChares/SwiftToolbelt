@@ -148,12 +148,12 @@ public extension Sequence {
         return result
     }
     
-    public func match<E, T>(xs: [E], ys: [T], fn: (E, T) -> Bool) -> [(E, T)] {
-        var results = [(E, T)]()
+    public func match<T>(against: [T], fn: (Iterator.Element, T) -> Bool) -> [(Iterator.Element, T)] {
+        var results: [(Iterator.Element, T)] = []
         //: OPTIMIZE
         // O(n^3)  There's probably a much better way to do this.  It probably involves sets
-        for x in xs {
-            for y in ys {
+        for x in self {
+            for y in against {
                 if fn(x, y) {
                     results.append(x, y)
                 }
