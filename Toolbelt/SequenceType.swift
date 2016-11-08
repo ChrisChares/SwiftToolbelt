@@ -168,12 +168,12 @@ public extension Sequence {
     /*
         Uniquing on arbitrary properites
     */
-    public func unique<T: Hashable>(fn: (Iterator.Element) -> T) -> [Iterator.Element] {
+    public func unique<T: Hashable>(fn: (Iterator.Element) -> T?) -> [Iterator.Element] {
         var set = Set<T>()
         var result: [Iterator.Element] = []
         
         for x in self {
-            let key = fn(x)
+            guard let key = fn(x) else { continue }
             guard !set.contains(key) else { continue }
             
             result.append(x)
