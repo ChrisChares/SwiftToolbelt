@@ -148,6 +148,9 @@ public extension Sequence {
         return result
     }
     
+    /*
+        Match objects from two different sequences into an array of tuples
+    */
     public func match<T>(against: [T], fn: (Iterator.Element, T) -> Bool) -> [(Iterator.Element, T)] {
         var results: [(Iterator.Element, T)] = []
         //: OPTIMIZE
@@ -160,5 +163,23 @@ public extension Sequence {
             }
         }
         return results
+    }
+    
+    /*
+        Uniquing on arbitrary properites
+    */
+    public func unique<T: Hashable>(fn: (Iterator.Element) -> T) -> [Iterator.Element] {
+        var set = Set<T>()
+        var result: [Iterator.Element] = []
+        
+        for x in self {
+            let key = fn(x)
+            guard !set.contains(key) else { continue }
+            
+            result.append(x)
+            set.insert(key)
+        }
+        
+        return result
     }
 }
